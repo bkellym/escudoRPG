@@ -1,25 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <title>Ficha</title>
-
-    <style>
-        body{
-            background-color: lightblue;
-        }
-    </style>
-
 </head>
 <body>
-
-    {% for item in ficha %}
-        <div>
-            <p>Força: {{ item.forca }} </p>
-            <p>Destreza: {{ item.destreza }} </p>
-            <p>Vigor: {{ item.vigor }} </p>
-        </div>
-    {% endfor %}
+    <div>
+        <h1>Nome: {{ personagem.nome }}</h1>
+        <p>Força: {{ ficha.forca }} </p>
+        <p>Destreza: {{ ficha.destreza }} </p>
+        <p>Vigor: {{ ficha.vigor }} </p>
+    </div>
 
 </body>
 </html>
