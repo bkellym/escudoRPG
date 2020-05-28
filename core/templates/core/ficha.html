@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha</title>
+
+    <style>
+        body{
+            background-color: lightblue;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% for item in ficha %}
+        <div>
+            <p>Força: {{ item.forca }} </p>
+            <p>Destreza: {{ item.destreza }} </p>
+            <p>Vigor: {{ item.vigor }} </p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
