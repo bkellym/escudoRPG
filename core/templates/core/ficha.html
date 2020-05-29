@@ -9,11 +9,98 @@
     <title>Ficha</title>
 </head>
 <body>
-    <div>
-        <h1>Nome: {{ personagem.nome }}</h1>
+    <div id="cabeçalho">
+        <p>Nome: {{ personagem.nome }}</p>
+        <p>Natureza: {{ personagem.natureza }}</p>
+        <p>Comportamento: {{ personagem.comportamento }}</p>
+        <p>Idade: {{ personagem.idade }}</p>
+        <p>Clã: {{ personagem.cla }}</p>
+
+    </div>
+
+    <div id="Atributos">
+        <h1>Atributos</h1>
+
+        <h2>Físicos</h2>
         <p>Força: {{ ficha.forca }} </p>
         <p>Destreza: {{ ficha.destreza }} </p>
         <p>Vigor: {{ ficha.vigor }} </p>
+
+        <h2>Sociais</h2>
+        <p>Carisma: {{ ficha.carisma }} </p>
+        <p>Manipulação: {{ ficha.manipulacao }} </p>
+        <p>Aparência: {{ ficha.aparencia }} </p>
+
+        <h2>Mentais</h2>
+        <p>Percepção: {{ ficha.percepcao }} </p>
+        <p>Inteligência: {{ ficha.inteligencia }} </p>
+        <p>Raciocínio: {{ ficha.raciocinio }} </p>
+    </div>
+
+    <div id="Habilidades">
+        <h1>Habilidades</h1>
+
+        <h2>Talentos</h2>
+        <p>Prontidão: {{ ficha.prontidao }}</p>
+        <p>Esportes: {{ ficha.esportes }}</p>
+        <p>Briga: {{ ficha.briga }}</p>
+        <p>Esquiva: {{ ficha.esquiva }}</p>
+        <p>Empatia: {{ ficha.empatia }}</p>
+        <p>Expressão: {{ ficha.expressao }}</p>
+        <p>Intimidação: {{ ficha.intimidacao }}</p>
+        <p>Liderança: {{ ficha.lideranca }}</p>
+        <p>Manha: {{ ficha.manha }}</p>
+        <p>Lábia: {{ ficha.labia }}</p>
+
+        <h2>Perícias</h2>
+        <p>Emp.Animais: {{ ficha.empatia_animais }}</p>
+        <p>Ofícios: {{ ficha.oficios }}</p>
+        <p>Condução: {{ ficha.conducao }}</p>
+        <p>Etiqueta: {{ ficha.etiqueta }}</p>
+        <p>Armas de Fogo: {{ ficha.armas_fogo }}</p>
+        <p>Armas Brancas: {{ ficha.armas_branca }}</p>
+        <p>Performance: {{ ficha.performance }}</p>
+        <p>Segurança: {{ ficha.seguranca }}</p>
+        <p>Furtividade: {{ ficha.furtividade }}</p>
+        <p>Sobrevivência: {{ ficha.sobrevivencia }}</p>
+
+        <h2>Mentais</h2>
+        <p>Acadêmicos: {{ ficha.academicos }}</p>
+        <p>Computador: {{ ficha.computador }}</p>
+        <p>Finanças: {{ ficha.financas }}</p>
+        <p>Investigação: {{ ficha.investigacao }}</p>
+        <p>Direito: {{ ficha.direito }}</p>
+        <p>Linguística: {{ ficha.linguistica }}</p>
+        <p>Medicina: {{ ficha.medicina }}</p>
+        <p>Ocultismo: {{ ficha.ocultismo }}</p>
+        <p>Político: {{ ficha.politico }}</p>
+        <p>Ciência: {{ ficha.ciencia }}</p>
+
+    </div>
+    <div id="virtudes">
+        <h1>Vitalidades</h1>
+        <p>Defesa: {{ ficha.defesa }}</p>
+        <p>Iniciativa: {{ ficha.iniciativa }}</p>
+        <p>Deslocamento: {{ ficha.deslocamento }}</p>
+
+        <h1>Virtudes</h1>
+        <p>Consciência: {{ ficha.consciencia }}</p>
+        <p>Auto-Controle: {{ ficha.autocontrole }}</p>
+        <p>Coragem: {{ ficha.coragem }}</p>
+
+        <h1>Outros</h1>
+        <p>humanidade: {{ ficha.humanidade }}</p>
+        <p>Força de Vontade: {{ ficha.forca_vontade }} / {{ ficha.forca_vontade_max }} </p>
+        <p>Pontos de sangue: {{ ficha.pontos_sangue }} / {{ ficha.pontos_sangue_max }} </p>
+
+        <h1>Vida</h1>
+        <p>Vitalidade:{{ ficha.vitalidade }} / {{ ficha.vitalidade_max }}  </p>
+
+    </div>
+    <div id="disciplinas_antecedentes">
+        <h1>Disciplinas</h1>
+        <p>{{ ficha.disciplina_1 }}:{{ ficha.disciplina_valor_1 }} </p>
+        <p>{{ ficha.disciplina_2 }}:{{ ficha.disciplina_valor_2 }} </p>
     </div>
 
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
