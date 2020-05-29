@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -27,6 +28,15 @@
                     </div>
                 </div>
 
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ ... ⤍⤍⤍⤔ </h5>
+                <div class="row">
+                    <div class="col s6">
+                        <p> Vitalidade: {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}</p>
+                        <p> Pontos de Sangue: {{entidade.ficha.pontos_sangue}} / {{entidade.ficha.pontos_sangue_max}}</p>
+                        <p> Humanidade: {{entidade.ficha.humanidade}}</p>
+                    </div>
+                </div>
+
                 <h5 class = 'title-session'> ⤟⤌⤌⤌ Atributos ⤍⤍⤍⤔ </h5>
                 <div class = 'row'>
                     <div class = 'col s4'>
@@ -49,18 +59,102 @@
                     </div>
                 </div>
 
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ Virtudes ⤍⤍⤍⤔ </h5>
+                <div class="row">
+                    <div class = 'col s6'>
+                            <p> Consciência: {{entidade.ficha.consciencia}} </p>
+                            <p> AutoControle: {{entidade.ficha.autocontrole}} </p>
+                            <p> Coragem: {{entidade.ficha.coragem}} </p>
+                    </div>
+
+                    <div class = 'col s6'>
+                            <p> Consciência: {{entidade.ficha.consciencia}} </p>
+                            <p> AutoControle: {{entidade.ficha.autocontrole}} </p>
+                            <p> Coragem: {{entidade.ficha.coragem}} </p>
+                    </div>
+                    <div class = 'col s6'>
+                            <p> Força de Vontade: {{entidade.ficha.forca_vontade}} / {{entidade.ficha.forca_vontade_max}} </p>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="col s4 blue-grey darken-4 amber-text text-lighten-2">
-                <p> Habilidades </p>
-                <br>
-                <h5 class = 'title-session'> ⤟⤌⤌⤌ Disciplinas ⤍⤍⤍⤔ </h5>
-                {% for disciplina in entidade.disciplinas %}
-                    <p> {{ disciplina.titulo }}: {{disciplina.valor}} </p>
-                {% endfor %}
-            </div>
-            <div class="col s4 blue-grey darken-4">
-                <p> Inventário </p>
+            <div class="col s8 blue-grey darken-4 amber-text text-lighten-2">
+                <div class="row">
+                    <h5 class = 'title-session'> ⤟⤌⤌⤌ Habilidades ⤍⤍⤍⤔ </h5>
+                    <div class="col s4  blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Talentos </h6>
+                        <p> Prontidão: {{entidade.ficha.prontidao}} </p>
+                        <p> Esportes: {{entidade.ficha.esportes}} </p>
+                        <p> Briga: {{entidade.ficha.briga}} </p>
+                        <p> Esquiva: {{entidade.ficha.esquiva}} </p>
+                        <p> Empatia: {{entidade.ficha.empatia}} </p>
+                        <p> Expressão: {{entidade.ficha.expressao}} </p>
+                        <p> Intimidação: {{entidade.ficha.intimidacao}} </p>
+                        <p> Liderança: {{entidade.ficha.lideranca}} </p>
+                        <p> Manha: {{entidade.ficha.manha}} </p>
+                        <p> Lábia: {{entidade.ficha.labia}} </p>
+                    </div>
+                    <div class="col s4  blue-grey darken-4">
+                       <h6 class = 'white-text title-session'> Perícias </h6>
+                        <p> Empatia com animais: {{entidade.ficha.empatia_animais}} </p>
+                        <p> Ofícios: {{entidade.ficha.oficios}} </p>
+                        <p> Condução: {{entidade.ficha.conducao}} </p>
+                        <p> Etiqueta: {{entidade.ficha.etiqueta}} </p>
+                        <p> Armas de Fogo: {{entidade.ficha.armas_fogo}} </p>
+                        <p> Armas Brancas: {{entidade.ficha.armas_branca}} </p>
+                        <p> Performance: {{entidade.ficha.performance}} </p>
+                        <p> Segurança: {{entidade.ficha.seguranca}} </p>
+                        <p> Furtividade: {{entidade.ficha.furtividade}} </p>
+                        <p> Sobrevivência: {{entidade.ficha.sobrevivencia}} </p>
+                    </div>
+
+                    <div class="col s4  blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Conhecimentos </h6>
+                        <p> Acadêmicos: {{entidade.ficha.academicos}} </p>
+                        <p> Computador: {{entidade.ficha.computador}} </p>
+                        <p> Finanças: {{entidade.ficha.financas}} </p>
+                        <p> Investigação: {{entidade.ficha.investigacao}} </p>
+                        <p> Direito: {{entidade.ficha.direito}} </p>
+                        <p> Linguística: {{entidade.ficha.linguistica}} </p>
+                        <p> Medicina: {{entidade.ficha.medicina}} </p>
+                        <p> Ocultismo: {{entidade.ficha.ocultismo}} </p>
+                        <p> Político: {{entidade.ficha.politico}} </p>
+                        <p> Ciência: {{entidade.ficha.ciencia}} </p>
+                    </div>
+                </div>
+
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ Qualidades e Defeitos ⤍⤍⤍⤔ </h5>
+                <div class="row">
+                    <div class="col s6 blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Qualidades </h6>
+                    </div>
+                    <div class="col s6 blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Defeitos </h6>
+                    </div>
+                </div>
+
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ Disciplinas e Antecedentes ⤍⤍⤍⤔ </h5>
+                <div class="row">
+                    <div class="col s6 blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Disciplinas </h6>
+                    {% for disciplina in entidade.disciplinas %}
+                        <p> {{ disciplina.titulo }}: {{disciplina.valor}} </p>
+                    {% endfor %}
+                    </div>
+
+                    <div class="col s6 blue-grey darken-4">
+                        <h6 class = 'white-text title-session'> Antecedentes </h6>
+                    </div>
+                </div>
+
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ Inventário ⤍⤍⤍⤔ </h5>
+                <div class="row">
+                    <div class="col s8 blue-grey darken-4">
+                        <p> Inventário </p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
