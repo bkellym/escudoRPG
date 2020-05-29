@@ -9,14 +9,16 @@
     <title>Ficha</title>
 </head>
 <body>
-    <div id="cabeçalho">
+<header>
+        <div id="cabeçalho">
         <p>Nome: {{ personagem.nome }}</p>
         <p>Natureza: {{ personagem.natureza }}</p>
         <p>Comportamento: {{ personagem.comportamento }}</p>
         <p>Idade: {{ personagem.idade }}</p>
         <p>Clã: {{ personagem.cla }}</p>
-
     </div>
+
+</header>
 
     <div id="Atributos">
         <h1>Atributos</h1>
@@ -64,7 +66,7 @@
         <p>Furtividade: {{ ficha.furtividade }}</p>
         <p>Sobrevivência: {{ ficha.sobrevivencia }}</p>
 
-        <h2>Mentais</h2>
+        <h2>Conhecimentos</h2>
         <p>Acadêmicos: {{ ficha.academicos }}</p>
         <p>Computador: {{ ficha.computador }}</p>
         <p>Finanças: {{ ficha.financas }}</p>
