@@ -8,48 +8,56 @@
     <title>Ficha</title>
 </head>
 <body>
+
     <div class = 'container'>
         <div class="row">
-            <div class="col s4 blue-grey darken-4">
-                <h5 class = 'amber-text text-lighten-2'> Nome: {{personagem.nome}}</h5>
+
+
+            <div class="col s4 green darken-4 green-text text-lighten-4">
+
+                <h5> Nome: {{entidade.personagem.nome}}</h5>
                 <div class="row">
                     <div class="col s6">
-                        <p class = 'amber-text text-lighten-2'> Natureza: {{personagem.natureza}}</p>
-                        <p class = 'amber-text text-lighten-2'> Idade: {{personagem.idade}}</p>
+                        <p> Natureza: {{entidade.personagem.natureza}}</p>
+                        <p> Idade: {{entidade.personagem.idade}}</p>
                     </div>
                     <div class="col s6">
-                        <p class = 'amber-text text-lighten-2'> Comportamento: {{personagem.comportamento}}</p>
-                        <p class = 'amber-text text-lighten-2'> Clã: {{personagem.cla}}</p>
+                        <p> Comportamento: {{entidade.personagem.comportamento}}</p>
+                        <p> Clã: {{entidade.personagem.cla}}</p>
                     </div>
                 </div>
-                <h5 class = 'amber-text text-lighten-2 title-session'> ⤟⤌⤌⤌ Atributos ⤍⤍⤍⤔ </h5>
-                <div class = 'row amber-text text-lighten-2'>
+
+                <h5 class = 'title-session'> ⤟⤌⤌⤌ Atributos ⤍⤍⤍⤔ </h5>
+                <div class = 'row'>
                     <div class = 'col s4'>
                         <h6 class = 'white-text title-session'> Físicos </h6>
-                        <p> Força: {{ficha.forca}} </p>
-                        <p> Destreza: {{ficha.destreza}} </p>
-                        <p> Vigor: {{ficha.vigor}} </p>
+                        <p> Força: {{entidade.ficha.forca}} </p>
+                        <p> Destreza: {{entidade.ficha.destreza}} </p>
+                        <p> Vigor: {{entidade.ficha.vigor}} </p>
                     </div>
                     <div class = 'col s4'>
                         <h6 class = 'white-text title-session'> Sociais </h6>
-                        <p> Carisma: {{ficha.carisma}} </p>
-                        <p> Manipulação: {{ficha.manipulacao}} </p>
-                        <p> Aparência: {{ficha.aparencia}} </p>
+                        <p> Carisma: {{entidade.ficha.carisma}} </p>
+                        <p> Manipulação: {{entidade.ficha.manipulacao}} </p>
+                        <p> Aparência: {{entidade.ficha.aparencia}} </p>
                     </div>
                     <div class = 'col s4'>
                         <h6 class = 'white-text title-session'> Mentais </h6>
-                        <p> Percepção: {{ficha.percepcao}} </p>
-                        <p> Inteligência: {{ficha.inteligencia}} </p>
-                        <p> Raciocínio: {{ficha.raciocinio}} </p>
+                        <p> Percepção: {{entidade.ficha.percepcao}} </p>
+                        <p> Inteligência: {{entidade.ficha.inteligencia}} </p>
+                        <p> Raciocínio: {{entidade.ficha.raciocinio}} </p>
                     </div>
                 </div>
+
             </div>
+
             <div class="col s4 blue-grey darken-4">
                 <p> Habilidades </p>
             </div>
             <div class="col s4 blue-grey darken-4">
                 <p> Inventário </p>
             </div>
+
         </div>
     </div>
 
