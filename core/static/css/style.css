@@ -1,9 +1,9 @@
 body {
-  background-color: lightblue;
+  background-color: #263238;
 }
 
 .container {
-  width: 98%;
+  width: 99%;
 }
 
 .row {
@@ -14,5 +14,17 @@ body {
 .title-session {
   margin-left:auto;
   margin-right:auto;
+  margin-bottom: 15px;
   text-align:center;
+}
+
+.campo {
+  margin-bottom: 12px;
+}
+
+.valor{
+    border-style: outset;
+    border-color: #ffe082;
+    border-width: 2.5px;
+    text-align:center;
 }
