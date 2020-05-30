@@ -15,16 +15,22 @@
 
             <!-- Inicio Primeira Coluna -->
             <div class="col s5 blue-grey darken-4 amber-text text-lighten-2" style="height: 100%">
-
-                <h5> Nome: {{entidade.personagem.nome}}</h5>
                 <div class="row">
-                    <div class="col s6">
-                        <p> Natureza: {{entidade.personagem.natureza}}</p>
-                        <p> Idade: {{entidade.personagem.idade}}</p>
+                    <div class="col s4">
+                            <img style = 'width: 90%; margin-top: 5px;' src="{% static 'img/token_1.png' %}">
                     </div>
-                    <div class="col s6">
-                        <p> Comportamento: {{entidade.personagem.comportamento}}</p>
-                        <p> Clã: {{entidade.personagem.cla}}</p>
+                    <div class="col s8">
+                        <h5> Nome: {{ entidade.personagem.nome }}</h5>
+                        <div class="row">
+                            <div class="col s6">
+                                <p> Natureza: {{entidade.personagem.natureza}}</p>
+                                <p> Idade: {{entidade.personagem.idade}}</p>
+                            </div>
+                            <div class="col s6">
+                                <p> Comportamento: {{entidade.personagem.comportamento}}</p>
+                                <p> Clã: {{entidade.personagem.cla}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -42,45 +48,45 @@
                         <h6 class = 'white-text title-session'> Físicos </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Força: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.forca}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.forca}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Destreza: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.destreza}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.destreza}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Vigor: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.vigor}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.vigor}} </div>
                         </div>
                     </div>
                     <div class = 'col s4'>
                         <h6 class = 'white-text title-session'> Sociais </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Carisma: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.carisma}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.carisma}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Manipulação: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.manipulacao}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.manipulacao}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Aparência: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.aparencia}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.aparencia}} </div>
                         </div>
                     </div>
                     <div class = 'col s4'>
                         <h6 class = 'white-text title-session'> Mentais </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Percepção: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.percepcao}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.percepcao}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Inteligência: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.inteligencia}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.inteligencia}} </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Raciocínio: </div>
-                            <div class = 'col s2 valor'> {{entidade.ficha.raciocinio}} </div>
+                            <div class = 'col s3 valor'> {{entidade.ficha.raciocinio}} </div>
                         </div>
                     </div>
                 </div>

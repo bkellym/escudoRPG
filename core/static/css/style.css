@@ -28,3 +28,7 @@ body {
     border-width: 2.5px;
     text-align:center;
 }
+
+#token {
+    width: 80%;
+}

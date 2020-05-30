@@ -29,4 +29,8 @@ def ficha(request, pk):
     if inventario.exists():
         entidade['inventario'] = inventario
 
+    inventario = Extra.objects.all().filter(id_personagem=personagem.pk, tipo=5)
+    if inventario.exists():
+        entidade['imagem'] = "static img/token_1.png"
+
     return render(request, 'core/ficha.html', {'entidade': entidade})
