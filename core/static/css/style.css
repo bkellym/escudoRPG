@@ -7,12 +7,11 @@ hr{
 }
 
 h5{
-    font-family: 'Yellowtail', cursive;
-
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-h6, p , {
-    font-family: 'MedievalSharp', cursive;
+h6, p{
+    font-family: 'Josefin Sans', sans-serif;
 }
 body {
   background-color: #212121;
@@ -45,9 +44,7 @@ body {
 
 .campo {
   margin-bottom: 12px;
-  font-family: 'MedievalSharp', cursive;
-
-
+  font-family: 'Lora', serif;
 }
 
 .valor{
@@ -60,4 +57,21 @@ body {
 
 #token {
     width: 80%;
+}
+
+.porcentagem{
+    background-color: #e0e0e0;
+    height: 26px;
+    padding: 0px !important;
+}
+
+.porcentagem_barra{
+    background-color: #e57373;
+    height: 20px;
+    margin-top: 1px;
+}
+
+.atributo{
+    font-size:11pt;
+    font-family: 'Lora', serif;
 }

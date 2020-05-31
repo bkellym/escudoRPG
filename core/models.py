@@ -11,6 +11,9 @@ class Personagem(models.Model):
     senhor = models.CharField(max_length=150, null=True, blank=True)
     conceito = models.CharField(max_length=150, null=True, blank=True)
 
+    def __str__(self):
+        return self.nome
+
 class Ficha(models.Model):
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 
