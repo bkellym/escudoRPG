@@ -20,7 +20,7 @@
                     <div class="col s4">
                             <img style = 'width: 90%; margin-top: 5px;' src="{% static 'img/token_1.png' %}">
                     </div>
-                    <div class="col s8 ">
+                    <div class="col s8">
                         <h5> Nome: {{ entidade.personagem.nome }}</h5>
                         <hr>
                         <div class="row">
@@ -99,17 +99,17 @@
                     <div class = 'col s6'>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> Consciência: </div>
-                            <div class = 'col s2'> {{entidade.ficha.consciencia}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.consciencia}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> AutoControle: </div>
-                            <div class = 'col s2'> {{entidade.ficha.autocontrole}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.autocontrole}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> Coragem: </div>
-                            <div class = 'col s2'> {{entidade.ficha.coragem}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.coragem}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                     </div>
@@ -117,17 +117,17 @@
                     <div class = 'col s6'>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> Defesa: </div>
-                            <div class = 'col s2'> {{entidade.ficha.defesa}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.defesa}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> Iniciativa: </div>
-                            <div class = 'col s2'> {{entidade.ficha.iniciativa}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.iniciativa}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                         <div class = 'row'>
                             <div class = 'col s8 campo'> Deslocamento: </div>
-                            <div class = 'col s2'> {{entidade.ficha.deslocamento}} </div>
+                            <div class = 'col s2 valor'> {{entidade.ficha.deslocamento}} </div>
                             <div class = 'col s2'> </div>
                         </div>
                     </div>
@@ -315,7 +315,7 @@
                             {% for disciplina in entidade.disciplinas %}
                                 <div class = 'row'>
                                     <div class = 'col s9 campo'> {{ disciplina.titulo }}: </div>
-                                    <div class = 'col s3'> {{disciplina.valor}} </div>
+                                    <div class = 'col s3 valor'> {{disciplina.valor}} </div>
                                 </div>
                             {% endfor %}
                         {% endif %}
