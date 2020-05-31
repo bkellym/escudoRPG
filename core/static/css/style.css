@@ -35,6 +35,13 @@ body {
   text-align:center;
   color: #FE4A49;
 }
+.subtitle-session{
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 15px;
+    text-align:center;
+    color: #D6D6D6;
+}
 
 .campo {
   margin-bottom: 12px;
@@ -45,7 +52,7 @@ body {
 
 .valor{
     border-style: outset;
-    border-color: #D3D0CB;
+    border-color: #B4AFA7;
     border-width: 2.5px;
     margin-right: -2px;
     text-align:center;

@@ -15,13 +15,14 @@
         <div class="row">
 
             <!-- Inicio Primeira Coluna -->
-            <div class="col s5 grey darken-4 amber-text text-lighten-2 esquerda " style="height: 100%">
+            <div class="col s5 grey darken-4 amber-text text-lighten-1 esquerda " style="height: 100%">
                 <div class="row">
                     <div class="col s4">
                             <img style = 'width: 90%; margin-top: 5px;' src="{% static 'img/token_1.png' %}">
                     </div>
                     <div class="col s8 ">
                         <h5> Nome: {{ entidade.personagem.nome }}</h5>
+                        <hr>
                         <div class="row">
                             <div class="col s6">
                                 <p> Natureza: {{entidade.personagem.natureza}}</p>
@@ -46,7 +47,7 @@
                 <h5 class = 'title-session'>  Atributos  </h5>
                 <div class = 'row'>
                     <div class = 'col s4'>
-                        <h6 class = 'white-text title-session'> Físicos </h6>
+                        <h6 class = 'subtitle-session'> Físicos </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Força: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.forca}} </div>
@@ -61,7 +62,7 @@
                         </div>
                     </div>
                     <div class = 'col s4'>
-                        <h6 class = 'white-text title-session'> Sociais </h6>
+                        <h6 class = 'subtitle-session'> Sociais </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Carisma: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.carisma}} </div>
@@ -76,7 +77,7 @@
                         </div>
                     </div>
                     <div class = 'col s4'>
-                        <h6 class = 'white-text title-session'> Mentais </h6>
+                        <h6 class = 'subtitle-session'> Mentais </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Percepção: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.percepcao}} </div>
@@ -138,11 +139,11 @@
             <!-- Fim Primeira Coluna -->
 
             <!-- Inicio Segunda Coluna -->
-            <div class="col s7 grey darken-4 amber-text text-lighten-2 direita" style="height: 100%">
+            <div class="col s7 grey darken-4 amber-text text-lighten-1 direita" style="height: 100%">
                 <div class="row">
                     <h5 class = 'title-session'> Habilidades  </h5>
                     <div class="col s4  grey darken-4">
-                        <h6 class = 'white-text title-session'> Talentos </h6>
+                        <h6 class = ' subtitle-session'> Talentos </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Prontidão: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.prontidao}} </div>
@@ -186,7 +187,7 @@
                     </div>
 
                     <div class="col s4  grey darken-4">
-                       <h6 class = 'white-text title-session'> Perícias </h6>
+                       <h6 class = 'subtitle-session'> Perícias </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Empatia com animais: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.empatia_animais}} </div>
@@ -230,7 +231,7 @@
                     </div>
 
                     <div class="col s4  grey darken-4">
-                        <h6 class = 'white-text title-session'> Conhecimentos </h6>
+                        <h6 class = 'subtitle-session'> Conhecimentos </h6>
                         <div class = 'row'>
                             <div class = 'col s9 campo'> Acadêmicos: </div>
                             <div class = 'col s3 valor'> {{entidade.ficha.academicos}} </div>
