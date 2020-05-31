@@ -1,5 +1,22 @@
+.esquerda, .direita {
+    border-style: double;
+    padding-right:3px;
+}
+hr{
+    border: 1px solid #ffd54f ;
+}
+
+h5{
+    font-family: 'Yellowtail', cursive;
+
+}
+
+h6, p , {
+    font-family: 'MedievalSharp', cursive;
+}
 body {
-  background-color: #263238;
+  background-color: #212121;
+
 }
 
 .container {
@@ -16,16 +33,21 @@ body {
   margin-right:auto;
   margin-bottom: 15px;
   text-align:center;
+  color: #FE4A49;
 }
 
 .campo {
   margin-bottom: 12px;
+  font-family: 'MedievalSharp', cursive;
+
+
 }
 
 .valor{
     border-style: outset;
-    border-color: #ffe082;
+    border-color: #D3D0CB;
     border-width: 2.5px;
+    margin-right: -2px;
     text-align:center;
 }
 
