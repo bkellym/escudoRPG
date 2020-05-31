@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title> {% block title %} {% endblock %} </title>
+</head>
+<body>
+    <div class = 'container'>
+        <div class="row">
+
+            {% block conteudo %}
+            {% endblock %}
+
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>
