@@ -1,19 +1,5 @@
 from django.db import models
 
-# Create your models here.
-class Personagem(models.Model):
-    nome = models.CharField(max_length=200)
-    idade = models.IntegerField(null=True, blank=True)
-    natureza = models.CharField(max_length=150, null=True, blank=True)
-    comportamento = models.CharField(max_length=150, null=True, blank=True)
-    cla = models.CharField(max_length=100, null=True, blank=True)
-    ocupacao = models.CharField(max_length=100, null=True, blank=True)
-    senhor = models.CharField(max_length=150, null=True, blank=True)
-    conceito = models.CharField(max_length=150, null=True, blank=True)
-
-    def __str__(self):
-        return self.nome
-
 class Ficha(models.Model):
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 
@@ -43,6 +29,7 @@ class Ficha(models.Model):
     lideranca = models.IntegerField(null=True, blank=False, default=0)
     manha = models.IntegerField(null=True, blank=False, default=0)
     labia = models.IntegerField(null=True, blank=False, default=0)
+    
     # Perícias
     empatia_animais = models.IntegerField(null=True, blank=False, default=0)
     oficios = models.IntegerField(null=True, blank=False, default=0)
@@ -54,8 +41,9 @@ class Ficha(models.Model):
     seguranca = models.IntegerField(null=True, blank=False, default=0)
     furtividade = models.IntegerField(null=True, blank=False, default=0)
     sobrevivencia = models.IntegerField(null=True, blank=False, default=0)
-    academicos = models.IntegerField(null=True, blank=False, default=0)
+
     # Conhecimentos
+    academicos = models.IntegerField(null=True, blank=False, default=0)
     computador = models.IntegerField(null=True, blank=False, default=0)
     financas = models.IntegerField(null=True, blank=False, default=0)
     investigacao = models.IntegerField(null=True, blank=False, default=0)
@@ -80,19 +68,3 @@ class Ficha(models.Model):
     pontos_sangue_max = models.IntegerField(null=True, blank=True)
     vitalidade = models.IntegerField(null=True, blank=True)
     vitalidade_max = models.IntegerField(null=True, blank=True)
-
-class Extra(models.Model):
-
-    class Tipo(models.IntegerChoices):
-        DISCIPLINA = 1
-        ANTECENDENTE = 2
-        QUALIDADE = 3
-        DEFEITO = 4
-        INVENTARIO = 5
-
-    id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=150, null=True, blank=True)
-    descricao = models.CharField(max_length=500, null=True, blank=True)
-    valor = models.IntegerField(null=True, blank=True)
-    tipo = models.IntegerField(choices=Tipo.choices)
-
