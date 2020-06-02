@@ -68,3 +68,12 @@ class Ficha(models.Model):
     pontos_sangue_max = models.IntegerField(null=True, blank=True)
     vitalidade = models.IntegerField(null=True, blank=True)
     vitalidade_max = models.IntegerField(null=True, blank=True)
+
+    def calculaPorcentagens(self):
+        retorno = {}
+
+        retorno['vitalidade'] = 100 * (self.vitalidade / self.vitalidade_max)
+        retorno['sangue'] = 100 * (self.pontos_sangue / self.pontos_sangue_max)
+        retorno['vontade'] = 100 * (self.forca_vontade / self.forca_vontade_max)
+
+        return retorno

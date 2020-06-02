@@ -7,16 +7,10 @@ def ficha(request, pk):
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha = Ficha.objects.get(id_personagem = personagem.pk)
-
-    porcentagem_vitalidade = 100 * (ficha.vitalidade/ficha.vitalidade_max)
-    porcentagem_sangue = 100 * (ficha.pontos_sangue/ficha.pontos_sangue_max)
-    porcentagem_forca_vontade = 100 * (ficha.forca_vontade / ficha.forca_vontade_max)
+    ficha =  Ficha.objects.get(id_personagem = personagem.pk)
 
     entidade['ficha'] = ficha
-    entidade['porcentagem_vitalidade'] = porcentagem_vitalidade
-    entidade['porcentagem_sangue'] = porcentagem_sangue
-    entidade['porcentagem_forca_vontade'] = porcentagem_forca_vontade
+    entidade['porcentagem'] = ficha.calculaPorcentagens()
 
     disciplinas = Extra.objects.all().filter(id_personagem=personagem.pk, tipo=1)
     if disciplinas.exists():
