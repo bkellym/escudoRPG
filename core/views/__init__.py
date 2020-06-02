@@ -1,0 +1,1 @@
+from .viewsFicha import ficha
