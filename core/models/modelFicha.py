@@ -6,6 +6,14 @@ SUBTRACAO = '-'
 class Ficha(models.Model):
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 
+    forca_vontade = models.IntegerField(null=False, default=0)
+    forca_vontade_max = models.IntegerField(null=False, default=0)
+    pontos_sangue = models.IntegerField(null=False, default=0)
+    pontos_sangue_max = models.IntegerField(null=False, default=0)
+    vitalidade = models.IntegerField(null=False, default=0)
+    vitalidade_max = models.IntegerField(null=False, default=0)
+    experiencia = models.IntegerField(null=False, default=0)
+
     ############### Atributos ###############
     # Físicos
     forca = models.IntegerField(null=True, blank=False, default=1)
@@ -65,12 +73,7 @@ class Ficha(models.Model):
     autocontrole = models.IntegerField(null=True, blank=True)
     coragem = models.IntegerField(null=True, blank=True)
     humanidade = models.IntegerField(null=True, blank=True)
-    forca_vontade = models.IntegerField(null=True, blank=True)
-    forca_vontade_max = models.IntegerField(null=True, blank=True)
-    pontos_sangue = models.IntegerField(null=True, blank=True)
-    pontos_sangue_max = models.IntegerField(null=True, blank=True)
-    vitalidade = models.IntegerField(null=True, blank=True)
-    vitalidade_max = models.IntegerField(null=True, blank=True)
+
 
     def calculaPorcentagens(self):
         retorno = {}
