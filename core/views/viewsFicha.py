@@ -1,13 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
 
-# Create your views here.
-def ficha(request, pk):
+
+SOMA = '+'
+SUBTRACAO = '-'
+
+
+def ficha(request, pk, template_name="core/ficha.html"):
     entidade = {}
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha =  Ficha.objects.get(id_personagem = personagem.pk)
+    ficha = Ficha.objects.get(id_personagem=personagem.pk)
 
     entidade['ficha'] = ficha
     entidade['porcentagem'] = ficha.calculaPorcentagens()
@@ -34,4 +38,52 @@ def ficha(request, pk):
 
     entidade['imagem'] = "img/token_" + str(personagem.pk) + ".png"
 
-    return render(request, 'core/ficha.html', {'entidade': entidade})
+    return render(request, template_name, {'entidade': entidade})
+
+
+def aumenta_vida(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem = pk)
+    value = int(request.GET.get('value'))
+
+    ficha.vitalidade_update(value, SOMA)
+
+    return redirect('/ficha/' + str(pk))
+
+def diminui_vida(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    value = int(request.GET.get('value'))
+
+    ficha.vitalidade_update(value, SUBTRACAO)
+    return redirect('/ficha/' + str(pk))
+
+
+def aumenta_sangue(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    value = int(request.GET.get('value'))
+
+    ficha.sangue_update(value, SOMA)
+    return redirect('/ficha/' + str(pk))
+
+
+def diminui_sangue(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    value = int(request.GET.get('value'))
+
+    ficha.sangue_update(value, SUBTRACAO)
+    return redirect('/ficha/' + str(pk))
+
+
+def aumenta_p_vontade(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    value = int(request.GET.get('value'))
+
+    ficha.vontade_update(value, SOMA)
+    return redirect('/ficha/' + str(pk))
+
+
+def diminui_p_vontade(request, pk):
+    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    value = int(request.GET.get('value'))
+
+    ficha.vontade_update(value, SUBTRACAO)
+    return redirect('/ficha/' + str(pk))

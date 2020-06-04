@@ -1,5 +1,8 @@
 from django.db import models
 
+SOMA = '+'
+SUBTRACAO = '-'
+
 class Ficha(models.Model):
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 
@@ -77,3 +80,39 @@ class Ficha(models.Model):
         retorno['vontade'] = 100 * (self.forca_vontade / self.forca_vontade_max)
 
         return retorno
+
+    def vitalidade_update(self, valor, operacao):
+        valor = int(valor)
+
+        if operacao == SOMA:
+            vitalidade_nova = self.vitalidade + valor
+        if operacao == SUBTRACAO:
+            vitalidade_nova = self.vitalidade - valor
+
+        if 0 <= vitalidade_nova <= self.vitalidade_max:
+            self.vitalidade = vitalidade_nova
+            self.save()
+
+    def sangue_update(self, valor, operacao):
+        valor = int(valor)
+
+        if operacao == SOMA:
+            sangue_novo = self.pontos_sangue + valor
+        if operacao == SUBTRACAO:
+            sangue_novo = self.pontos_sangue - valor
+
+        if 0 <= sangue_novo <= self.pontos_sangue_max:
+            self.pontos_sangue = sangue_novo
+            self.save()
+
+    def vontade_update(self, valor, operacao):
+        valor = int(valor)
+
+        if operacao == SOMA:
+            vontade_nova = self.forca_vontade + valor
+        if operacao == SUBTRACAO:
+            vontade_nova = self.forca_vontade - valor
+
+        if 0 <= vontade_nova <= self.forca_vontade_max:
+            self.forca_vontade = vontade_nova
+            self.save()

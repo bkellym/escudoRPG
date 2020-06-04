@@ -31,28 +31,64 @@
             <div class="col s12">
                 <div class = 'row'>
                     <div class = 'col s4 campo'> Vitalidade: </div>
-                    <div class = 'col s7 valor porcentagem'>
+                    <div class = 'col s1'>
+                        <form action="{% url 'diminui_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="-">
+                        </form>
+                    </div>
+                    <div class = 'col s5 valor porcentagem black-text'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vitalidade }}%;">
                             {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}
                         </div>
+                    </div>
+                    <div class = 'col s1'>
+                        <form action="{% url 'aumenta_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="+">
+                        </form>
                     </div>
                 </div>
                 <br>
                 <div class = 'row'>
                     <div class = 'col s4 campo'> Pontos de Sangue: </div>
-                    <div class = 'col s7 valor porcentagem'>
+                    <div class = 'col s1'>
+                        <form action="{% url 'diminui_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="-">
+                        </form>
+                    </div>
+                    <div class = 'col s5 valor porcentagem'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.sangue }}%;">
                             {{entidade.ficha.pontos_sangue}} / {{entidade.ficha.pontos_sangue_max}}
                         </div>
+                    </div>
+                    <div class = 'col s1'>
+                        <form action="{% url 'aumenta_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="+">
+                        </form>
                     </div>
                 </div>
                 <br>
                 <div class = 'row'>
                     <div class = 'col s4 campo'> Força de Vontade: </div>
-                    <div class = 'col s7 valor porcentagem'>
+                    <div class = 'col s1'>
+                        <form action="{% url 'diminui_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="-">
+                        </form>
+                    </div>
+                    <div class = 'col s5 valor porcentagem'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vontade }}%;">
                             {{entidade.ficha.forca_vontade}} / {{entidade.ficha.forca_vontade_max}}
                         </div>
+                    </div>
+                    <div class = 'col s1'>
+                        <form action="{% url 'aumenta_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                            <input type="hidden" name="value" value = "1">
+                            <input type="submit" value="+">
+                        </form>
                     </div>
                 </div>
                 <br>
