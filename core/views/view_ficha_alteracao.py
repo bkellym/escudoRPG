@@ -20,6 +20,27 @@ def check_campo(request):
 
         return redirect('/ficha/' + str(habilidade.ficha.id_personagem.id))
 
+def upar_habilidade(request):
+    if request.method == "POST":
+        id = request.POST['id']
+        habilidade = Habilidade.objects.get(id=id)
+        ficha = Ficha.objects.get(id=habilidade.ficha.id)
+
+        if habilidade.valor == 0:
+            custo_xp = 3
+
+        if habilidade.valor > 0:
+            custo_xp = 2
+
+        if ficha.experiencia - custo_xp >= 0:
+            habilidade.valor = habilidade.valor + 1
+            habilidade.checked = False
+            ficha.experiencia = ficha.experiencia - custo_xp
+            habilidade.save()
+            ficha.save()
+
+        return redirect('/subir_nivel/' + str(habilidade.ficha.id_personagem.id))
+
 
 def aumenta_vida(request, pk):
     ficha: Ficha = get_object_or_404(Ficha, id_personagem = pk)
