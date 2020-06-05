@@ -99,45 +99,45 @@
         <div class = 'row'>
             <div class = 'col s4'>
                 <h6 class = 'subtitle-session'> Físicos </h6>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Força: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.forca}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Destreza: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.destreza}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Vigor: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.vigor}} </div>
                 </div>
             </div>
             <div class = 'col s4'>
                 <h6 class = 'subtitle-session'> Sociais </h6>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Carisma: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.carisma}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Manipulação: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.manipulacao}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Aparência: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.aparencia}} </div>
                 </div>
             </div>
             <div class = 'col s4'>
                 <h6 class = 'subtitle-session'> Mentais </h6>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Percepção: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.percepcao}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Inteligência: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.inteligencia}} </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Raciocínio: </div>
                     <div class = 'col s3 valor'> {{entidade.ficha.raciocinio}} </div>
                 </div>
@@ -148,22 +148,22 @@
         <h5 class = 'title-session'>  Virtudes  </h5>
         <div class="row">
             <div class = 'col s6'>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Consciência: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.consciencia}} </div>
                     <div class = 'col s2'> </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> AutoControle: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.autocontrole}} </div>
                     <div class = 'col s2'> </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Coragem: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.coragem}} </div>
                     <div class = 'col s2'> </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Humanidade: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.humanidade}} </div>
                     <div class = 'col s2'> </div>
@@ -171,17 +171,17 @@
             </div>
 
             <div class = 'col s6'>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Defesa: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.defesa}} </div>
                     <div class = 'col s2'> </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Iniciativa: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.iniciativa}} </div>
                     <div class = 'col s2'> </div>
                 </div>
-                <div class = 'row'>
+                <div class = 'row linha'>
                     <div class = 'col s8 campo'> Deslocamento: </div>
                     <div class = 'col s2 valor'> {{entidade.ficha.deslocamento}} </div>
                     <div class = 'col s2'> </div>
@@ -199,8 +199,19 @@
                 <h6 class = ' subtitle-session'> Talentos </h6>
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 1 %}
-                        <div class = 'row'>
-                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                        <div class = 'row linha'>
+                            <div class = 'col s1'>
+                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                    {% if habilidade.checked == True %}
+                                        <input type="submit" value="v">
+                                    {% endif %}
+                                    {% if habilidade.checked == False %}
+                                        <input type="submit" value="x">
+                                    {% endif %}
+                                </form>
+                            </div>
+                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
@@ -211,8 +222,19 @@
                 <h6 class = 'subtitle-session'> Perícias </h6>
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 2 %}
-                        <div class = 'row'>
-                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                        <div class = 'row linha'>
+                            <div class = 'col s1'>
+                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                    {% if habilidade.checked == True %}
+                                        <input type="submit" value="v">
+                                    {% endif %}
+                                    {% if habilidade.checked == False %}
+                                        <input type="submit" value="x">
+                                    {% endif %}
+                                </form>
+                            </div>
+                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
@@ -223,8 +245,19 @@
                 <h6 class = 'subtitle-session'> Conhecimentos </h6>
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 3 %}
-                        <div class = 'row'>
-                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                        <div class = 'row linha'>
+                            <div class = 'col s1'>
+                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                    {% if habilidade.checked == True %}
+                                        <input type="submit" value="v">
+                                    {% endif %}
+                                    {% if habilidade.checked == False %}
+                                        <input type="submit" value="x">
+                                    {% endif %}
+                                </form>
+                            </div>
+                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
@@ -240,14 +273,14 @@
                     <div class="row">
                         <div class="col s6 grey darken-4 ">
                             {% for qualidade in entidade.qualidades %}
-                                <div class = 'row'>
+                                <div class = 'row linha'>
                                     <div class = 'col s12 campo amber-2-text'> {{ qualidade.titulo }} </div>
                                 </div>
                             {% endfor %}
                         </div>
                         <div class="col s6 grey darken-4">
                             {% for defeito in entidade.defeitos %}
-                                <div class = 'row'>
+                                <div class = 'row linha'>
                                     <div class = 'col s12 campo amber-2-text'> {{ defeito.titulo }} </div>
                                 </div>
                             {% endfor %}
@@ -258,7 +291,7 @@
                 {% if entidade.antecendentes != none %}
                     <h5 class = 'title-session'>  Antecendentes </h5>
                     {% for antecendente in entidade.antecendentes %}
-                        <div class = 'row'>
+                        <div class = 'row linha'>
                             <div class = 'col s9 campo'> {{ antecendente.titulo }}: </div>
                             <div class = 'col s2 valor'> {{antecendente.valor}} </div>
                         </div>
@@ -270,7 +303,7 @@
                     <hr>
                     <h5 class = 'title-session'> Disciplinas </h5>
                     {% for disciplina in entidade.disciplinas %}
-                        <div class = 'row'>
+                        <div class = 'row linha'>
                             <div class = 'col s9 campo'> {{ disciplina.titulo }}: </div>
                             <div class = 'col s2 valor'> {{disciplina.valor}} </div>
                         </div>
@@ -279,7 +312,7 @@
                 {% if entidade.inventario != None %}
                     <h5 class = 'title-session'> Inventário </h5>
                     {% for item in entidade.inventario %}
-                        <div class = 'row'>
+                        <div class = 'row linha'>
                             <div class = 'col s12 campo'> {{ item.titulo }} </div>
                         </div>
                     {% endfor %}

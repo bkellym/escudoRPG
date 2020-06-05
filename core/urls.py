@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('ficha/<int:pk>/', views.ficha, name='ficha'),
+    path('check_campo/', views.check_campo, name='check_campo'),
     path('aumenta_vida/<int:pk>', views.aumenta_vida, name='aumenta_vida'),
     path('diminui_vida/<int:pk>', views.diminui_vida, name='diminui_vida'),
     path('aumenta_sangue/<int:pk>', views.aumenta_sangue, name='aumenta_sangue'),

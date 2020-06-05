@@ -42,8 +42,11 @@ body {
     color: #D6D6D6;
 }
 
-.campo {
+.linha {
   margin-bottom: 12px;
+}
+
+.campo {
   font-family: 'Lora', serif;
 }
 

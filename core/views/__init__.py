@@ -1,1 +1,1 @@
-from .viewsFicha import ficha, aumenta_vida, diminui_vida, aumenta_sangue, diminui_sangue, aumenta_p_vontade, diminui_p_vontade
+from .viewsFicha import ficha, check_campo,aumenta_vida, diminui_vida, aumenta_sangue, diminui_sangue, aumenta_p_vontade, diminui_p_vontade

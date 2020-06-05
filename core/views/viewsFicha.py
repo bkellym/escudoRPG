@@ -91,3 +91,18 @@ def diminui_p_vontade(request, pk):
 
     ficha.vontade_update(value, SUBTRACAO)
     return redirect('/ficha/' + str(pk))
+
+def check_campo(request):
+    if request.method == "POST":
+        id = request.POST['id']
+
+        habilidade = Habilidade.objects.get(id=id)
+
+        if habilidade.checked:
+            habilidade.checked = False
+        else:
+            habilidade.checked = True
+
+        habilidade.save()
+
+        return redirect('/ficha/' + str(habilidade.ficha.id_personagem.id))

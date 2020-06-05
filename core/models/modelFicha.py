@@ -28,43 +28,6 @@ class Ficha(models.Model):
     inteligencia = models.IntegerField(null=True, blank=False, default=1)
     raciocinio = models.IntegerField(null=True, blank=False, default=1)
 
-    ############### Habilidades ###############
-    # Talentos
-    prontidao = models.IntegerField(null=True, blank=False, default=0)
-    esportes = models.IntegerField(null=True, blank=False, default=0)
-    briga = models.IntegerField(null=True, blank=False, default=0)
-    esquiva = models.IntegerField(null=True, blank=False, default=0)
-    empatia = models.IntegerField(null=True, blank=False, default=0)
-    expressao = models.IntegerField(null=True, blank=False, default=0)
-    intimidacao = models.IntegerField(null=True, blank=False, default=0)
-    lideranca = models.IntegerField(null=True, blank=False, default=0)
-    manha = models.IntegerField(null=True, blank=False, default=0)
-    labia = models.IntegerField(null=True, blank=False, default=0)
-    
-    # Perícias
-    empatia_animais = models.IntegerField(null=True, blank=False, default=0)
-    oficios = models.IntegerField(null=True, blank=False, default=0)
-    conducao = models.IntegerField(null=True, blank=False, default=0)
-    etiqueta = models.IntegerField(null=True, blank=False, default=0)
-    armas_fogo = models.IntegerField(null=True, blank=False, default=0)
-    armas_branca = models.IntegerField(null=True, blank=False, default=0)
-    performance = models.IntegerField(null=True, blank=False, default=0)
-    seguranca = models.IntegerField(null=True, blank=False, default=0)
-    furtividade = models.IntegerField(null=True, blank=False, default=0)
-    sobrevivencia = models.IntegerField(null=True, blank=False, default=0)
-
-    # Conhecimentos
-    academicos = models.IntegerField(null=True, blank=False, default=0)
-    computador = models.IntegerField(null=True, blank=False, default=0)
-    financas = models.IntegerField(null=True, blank=False, default=0)
-    investigacao = models.IntegerField(null=True, blank=False, default=0)
-    direito = models.IntegerField(null=True, blank=False, default=0)
-    linguistica = models.IntegerField(null=True, blank=False, default=0)
-    medicina = models.IntegerField(null=True, blank=False, default=0)
-    ocultismo = models.IntegerField(null=True, blank=False, default=0)
-    politico = models.IntegerField(null=True, blank=False, default=0)
-    ciencia = models.IntegerField(null=True, blank=False, default=0)
-
     ############### Virtudes ###############
     defesa = models.IntegerField(null=True, blank=True)
     iniciativa = models.IntegerField(null=True, blank=True)
