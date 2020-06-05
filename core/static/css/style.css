@@ -7,6 +7,25 @@ button {
     padding:5 5 5 5px;
     transition-duration: 0.4s;
 }
+.vcheck {
+    border: 1.5   0px solid #B4AFA7;
+    border-radius: 4px;
+    background-color:#008000;
+    text-align:center;
+    color:#ffd54f;
+    padding:5 5 5 5px;
+    transition-duration: 0.4s;
+}
+
+.xcheck{
+    border: 1.5   0px solid #B4AFA7;
+    border-radius: 4px;
+    background-color:red;
+    text-align:center;
+    color:#ffd54f;
+    padding:5 5 5 5px;
+    transition-duration: 0.4s;
+}
 
 button:hover {
 }
