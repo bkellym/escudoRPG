@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Personagem)
 admin.site.register(Ficha)
 admin.site.register(Extra)
+admin.site.register(Habilidade)

@@ -15,3 +15,6 @@ class Extra(models.Model):
     valor = models.IntegerField(null=True, blank=True)
     tipo = models.IntegerField(choices=Tipo.choices)
 
+    def __str__(self):
+        return self.id_personagem.nome + " | " + self.titulo
+

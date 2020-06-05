@@ -16,6 +16,10 @@ def ficha(request, pk, template_name="core/ficha.html"):
     entidade['ficha'] = ficha
     entidade['porcentagem'] = ficha.calculaPorcentagens()
 
+    habilidades = Habilidade.objects.all().filter(ficha=ficha.id)
+    if habilidades.exists():
+        entidade['habilidades'] = habilidades
+
     disciplinas = Extra.objects.all().filter(id_personagem=personagem.pk, tipo=1)
     if disciplinas.exists():
         entidade['disciplinas'] = disciplinas

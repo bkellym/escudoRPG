@@ -74,6 +74,9 @@ class Ficha(models.Model):
     coragem = models.IntegerField(null=True, blank=True)
     humanidade = models.IntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return self.id_personagem.nome
+
 
     def calculaPorcentagens(self):
         retorno = {}

@@ -197,134 +197,38 @@
             <h5 class = 'title-session'> Habilidades  </h5>
             <div class="col s4  grey darken-4">
                 <h6 class = ' subtitle-session'> Talentos </h6>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Prontidão: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.prontidao}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Esportes: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.esportes}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Briga: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.briga}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Esquiva: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.esquiva}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Empatia: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.empatia}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Expressão: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.expressao}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Intimidação: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.intimidacao}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Liderança: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.lideranca}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Manha: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.manha}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Lábia: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.labia}} </div>
-                </div>
+                {% for habilidade in entidade.habilidades %}
+                    {% if habilidade.tipo == 1 %}
+                        <div class = 'row'>
+                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
 
             <div class="col s4  grey darken-4">
-               <h6 class = 'subtitle-session'> Perícias </h6>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Empatia c/ animais: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.empatia_animais}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Ofícios: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.oficios}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Condução: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.conducao}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Etiqueta: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.etiqueta}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Armas de Fogo: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.armas_fogo}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Armas Brancas: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.armas_branca}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Performance: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.performance}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Segurança: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.seguranca}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Furtividade: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.furtividade}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Sobrevivência: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.sobrevivencia}} </div>
-                </div>
+                <h6 class = 'subtitle-session'> Perícias </h6>
+                {% for habilidade in entidade.habilidades %}
+                    {% if habilidade.tipo == 2 %}
+                        <div class = 'row'>
+                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
 
             <div class="col s4  grey darken-4">
                 <h6 class = 'subtitle-session'> Conhecimentos </h6>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Acadêmicos: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.academicos}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Computador: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.computador}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Finanças: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.financas}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Investigação: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.investigacao}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Direito: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.direito}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Linguística: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.linguistica}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Medicina: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.medicina}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Ocultismo: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.ocultismo}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Político: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.politico}} </div>
-                </div>
-                <div class = 'row'>
-                    <div class = 'col s8 campo'> Ciência: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.ciencia}} </div>
-                </div>
+                {% for habilidade in entidade.habilidades %}
+                    {% if habilidade.tipo == 3 %}
+                        <div class = 'row'>
+                            <div class = 'col s8 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
 
