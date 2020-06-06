@@ -114,3 +114,16 @@ body {
     font-size:11pt;
     font-family: 'Lora', serif;
 }
+
+.btn-upar{
+    position: fixed;
+	width: 150px;
+	top: 5px;
+	right: 2.8%;
+	color:#ffe082;
+	background-color:#263238;
+}
+
+.btn-upar:hover{
+   background-color:#455a64;
+}
