@@ -202,18 +202,18 @@
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 1 %}
                         <div class = 'row linha'>
-                            <div class = 'col s1'>
+                            <div class = 'col s2'>
                                 <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                    <button type="submit" value="v" class="vcheck">v</button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
                                     {% endif %}
                                     {% if habilidade.checked == False %}
-                                        <button type="submit" value="x" class="xcheck">x</button>
+                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
                                     {% endif %}
                                 </form>
                             </div>
-                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
@@ -225,18 +225,18 @@
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 2 %}
                         <div class = 'row linha'>
-                            <div class = 'col s1'>
+                            <div class = 'col s2'>
                                 <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                        <button type="submit" value="v" class="vcheck">v</button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
                                     {% endif %}
                                     {% if habilidade.checked == False %}
-                                        <button type="submit" value="x" class="xcheck">x</button>
+                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
                                     {% endif %}
                                 </form>
                             </div>
-                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
@@ -248,18 +248,18 @@
                 {% for habilidade in entidade.habilidades %}
                     {% if habilidade.tipo == 3 %}
                         <div class = 'row linha'>
-                            <div class = 'col s1'>
+                            <div class = 'col s2'>
                                 <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                        <button type="submit" value="v" class="vcheck">v</button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
                                     {% endif %}
                                     {% if habilidade.checked == False %}
-                                        <button type="submit" value="x" class="xcheck">x</button>
+                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
                                     {% endif %}
                                 </form>
                             </div>
-                            <div class = 'col s7 campo'> {{ habilidade.titulo }}: </div>
+                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
                             <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
                         </div>
                     {% endif %}
