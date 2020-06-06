@@ -41,6 +41,30 @@ class Ficha(models.Model):
         return self.id_personagem.nome
 
 
+    def calculaCustos(self):
+        retorno = {}
+
+        if self.consciencia < 4:
+            consciencia = self.consciencia * 2
+        else:
+            consciencia = self.consciencia * 4
+        retorno['consciencia'] = consciencia
+
+        if self.autocontrole < 4:
+            autocontrole = self.autocontrole * 2
+        else:
+            autocontrole = self.autocontrole * 4
+        retorno['autocontrole'] = autocontrole
+
+        if self.consciencia < 4:
+            coragem = self.coragem * 2
+        else:
+            coragem = self.coragem * 4
+        retorno['coragem'] = coragem
+
+        return retorno
+
+
     def calculaPorcentagens(self):
         retorno = {}
 

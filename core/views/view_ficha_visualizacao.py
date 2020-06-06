@@ -50,6 +50,7 @@ def ficha_update(request, pk, template_name="core/ficha_atualizacao.html"):
 
     entidade['ficha'] = ficha
     entidade['porcentagem'] = ficha.calculaPorcentagens()
+    entidade['custo'] = ficha.calculaCustos()
 
     habilidades = Habilidade.objects.all().filter(ficha=ficha.id)
     if habilidades.exists():

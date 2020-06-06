@@ -28,9 +28,10 @@ def upar_habilidade(request):
 
         if habilidade.valor == 0:
             custo_xp = 3
-
-        if habilidade.valor > 0:
-            custo_xp = 2
+        else:
+            custo_xp = habilidade.valor * 2
+            if habilidade.valor >= 4:
+                custo_xp = custo_xp * 2
 
         if ficha.experiencia - custo_xp >= 0:
             habilidade.valor = habilidade.valor + 1
@@ -41,6 +42,40 @@ def upar_habilidade(request):
 
         return redirect('/subir_nivel/' + str(habilidade.ficha.id_personagem.id))
 
+def upar_virtude(request):
+    if request.method == "POST":
+        id = int(request.POST['id'])
+        campo = request.POST['campo']
+        ficha = get_object_or_404(Ficha, id=id)
+
+        if campo == "consciencia":
+            custo = ficha.consciencia * 2
+            if ficha.consciencia >= 4:
+                custo = custo * 2
+
+            ficha.consciencia = ficha.consciencia + 1
+
+        if campo == "autocontrole":
+            custo = ficha.autocontrole * 2
+            if ficha.autocontrole >= 4:
+                custo = custo * 2
+
+            ficha.autocontrole = ficha.autocontrole + 1
+            ficha.iniciativa = ficha.destreza + ficha.autocontrole
+            ficha.forca_vontade_max = ficha.percepcao + ficha.autocontrole
+
+        if campo == "coragem":
+            custo = ficha.coragem * 2
+            if ficha.coragem >= 4:
+                custo = custo * 2
+
+            ficha.coragem = ficha.coragem + 1
+
+        if ficha.experiencia - custo >= 0:
+            ficha.experiencia = ficha.experiencia - custo
+            ficha.save()
+
+        return redirect('/subir_nivel/' + str(ficha.id_personagem.id))
 
 def aumenta_vida(request, pk):
     ficha: Ficha = get_object_or_404(Ficha, id_personagem = pk)
