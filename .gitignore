@@ -1,2 +1,7 @@
 .idea
+/core/__pycache__/
+/core/migrations/__pycache__/
+/core/models/__pycache__/
+/core/views/__pycache__/
+/escudoRPG/__pycache__/
 /venv
