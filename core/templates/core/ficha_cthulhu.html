@@ -240,6 +240,7 @@
         <div class = "col s3 amber-text text-lighten-1 direita">
             <br>
             {% for habilidade in entidade.habilidades %}
+                {% if habilidade.coluna == 1 %}
                 <div class="row" style="margin-bottom:12px">
                     <div class="col s7">
                         {{ habilidade.titulo }}
@@ -260,19 +261,92 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
             {% endfor %}
         </div>
 
         <div class = "col s3 amber-text text-lighten-1 direita">
-
+            <br>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.coluna == 2 %}
+                <div class="row" style="margin-bottom:12px">
+                    <div class="col s7">
+                        {{ habilidade.titulo }}
+                    </div>
+                    <div class="col s2 normal">
+                        {{ habilidade.normal }}
+                    </div>
+                    <div class="col s2" style="text-align: center;">
+                        <div class="row">
+                            <div class="col s12 bom">
+                                {{ habilidade.bom }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 extremo">
+                                {{ habilidade.extremo }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <div class = "col s3 amber-text text-lighten-1 direita">
-
+            <br>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.coluna == 3 %}
+                <div class="row" style="margin-bottom:12px">
+                    <div class="col s7">
+                        {{ habilidade.titulo }}
+                    </div>
+                    <div class="col s2 normal">
+                        {{ habilidade.normal }}
+                    </div>
+                    <div class="col s2" style="text-align: center;">
+                        <div class="row">
+                            <div class="col s12 bom">
+                                {{ habilidade.bom }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 extremo">
+                                {{ habilidade.extremo }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <div class = "col s3 amber-text text-lighten-1 direita">
-
+            <br>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.coluna == 4 %}
+                <div class="row" style="margin-bottom:12px">
+                    <div class="col s7">
+                        {{ habilidade.titulo }}
+                    </div>
+                    <div class="col s2 normal">
+                        {{ habilidade.normal }}
+                    </div>
+                    <div class="col s2" style="text-align: center;">
+                        <div class="row">
+                            <div class="col s12 bom">
+                                {{ habilidade.bom }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 extremo">
+                                {{ habilidade.extremo }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 {% endblock conteudo %}
