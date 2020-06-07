@@ -6,7 +6,7 @@
 
 {% block conteudo %}
 
-    <a class="waves-effect waves-light btn btn-upar" href="{% url 'subir_nivel' entidade.personagem.id %}"> Upar </a>
+    <a class="waves-effect waves-light btn btn-upar" href="{% url 'ficha' entidade.personagem.id %}"> Voltar </a>
 
     <!-- Inicio Primeira Coluna -->
     <div class="col s5 grey darken-4 amber-text text-lighten-1 esquerda " style="height: 100%">
@@ -30,70 +30,32 @@
             </div>
         </div>
         <hr>
-        <br>
         <div class="row">
             <div class="col s12">
-                <div class = 'row'>
-                    <div class = 'col s4 campo'> Vitalidade: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem black-text'>
+                <div class = 'row'">
+                    <div class = 'col s4 campo' style="margin-bottom:10px;"> Vitalidade: </div>
+                    <div class = 'col s7 valor porcentagem black-text'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vitalidade }}%;">
                             {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}
                         </div>
                     </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                    </div>
                 </div>
                 <br>
                 <div class = 'row'>
-                    <div class = 'col s4 campo'> Pontos de Sangue: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem'>
+                    <div class = 'col s4 campo' style="margin-bottom:10px;"> Pontos de Sangue: </div>
+                    <div class = 'col s7 valor porcentagem'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.sangue }}%;">
                             {{entidade.ficha.pontos_sangue}} / {{entidade.ficha.pontos_sangue_max}}
                         </div>
                     </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                    </div>
                 </div>
                 <br>
                 <div class = 'row'>
-                    <div class = 'col s4 campo'> Força de Vontade: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem'>
+                    <div class = 'col s4 campo' style="margin-bottom:15px;"> Força de Vontade: </div>
+                    <div class = 'col s7 valor porcentagem'>
                         <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vontade }}%;">
                             {{entidade.ficha.forca_vontade}} / {{entidade.ficha.forca_vontade_max}}
                         </div>
-                    </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                        <br>
                     </div>
                 </div>
                 <br>
@@ -154,17 +116,53 @@
         <div class="row">
             <div class = 'col s6'>
                 <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Consciência: </div>
+                    {% if entidade.ficha.experiencia >= entidade.custo.consciencia %}
+                    <div class = 'col s2 campo'>
+                        <form action="{% url 'upar_virtude' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ entidade.ficha.id }}">
+                            <input type="hidden" name="campo" value = "consciencia">
+                            <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
+                        </form>
+                    </div>
+                    <div class = 'col s6 campo'> Consciência: </div>
+                    {% endif %}
+                    {% if entidade.ficha.experiencia < entidade.custo.consciencia %}
+                        <div class = 'col s8 campo'> Consciência: </div>
+                    {% endif %}
                     <div class = 'col s2 valor'> {{entidade.ficha.consciencia}} </div>
                     <div class = 'col s2'> </div>
                 </div>
                 <div class = 'row linha'>
-                    <div class = 'col s8 campo'> AutoControle: </div>
+                    {% if entidade.ficha.experiencia >= entidade.custo.autocontrole %}
+                    <div class = 'col s2 campo'>
+                        <form action="{% url 'upar_virtude' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ entidade.ficha.id }}">
+                            <input type="hidden" name="campo" value = "autocontrole">
+                            <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
+                        </form>
+                    </div>
+                    <div class = 'col s6 campo'> AutoControle: </div>
+                    {% endif %}
+                    {% if entidade.ficha.experiencia < entidade.custo.autocontrole %}
+                        <div class = 'col s8 campo'> AutoControle: </div>
+                    {% endif %}
                     <div class = 'col s2 valor'> {{entidade.ficha.autocontrole}} </div>
                     <div class = 'col s2'> </div>
                 </div>
                 <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Coragem: </div>
+                    {% if entidade.ficha.experiencia >= entidade.custo.coragem %}
+                    <div class = 'col s2 campo'>
+                        <form action="{% url 'upar_virtude' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ entidade.ficha.id }}">
+                            <input type="hidden" name="campo" value = "coragem">
+                            <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
+                        </form>
+                    </div>
+                    <div class = 'col s6 campo'> AutoControle: </div>
+                    {% endif %}
+                    {% if entidade.ficha.experiencia < entidade.custo.coragem %}
+                        <div class = 'col s8 campo'> Coragem: </div>
+                    {% endif %}
                     <div class = 'col s2 valor'> {{entidade.ficha.coragem}} </div>
                     <div class = 'col s2'> </div>
                 </div>
@@ -206,13 +204,10 @@
                     {% if habilidade.tipo == 1 %}
                         <div class = 'row linha'>
                             <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <form action="{% url 'upar_habilidade' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
                                     {% endif %}
                                 </form>
                             </div>
@@ -229,13 +224,10 @@
                     {% if habilidade.tipo == 2 %}
                         <div class = 'row linha'>
                             <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <form action="{% url 'upar_habilidade' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
                                     {% endif %}
                                 </form>
                             </div>
@@ -252,13 +244,10 @@
                     {% if habilidade.tipo == 3 %}
                         <div class = 'row linha'>
                             <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <form action="{% url 'upar_habilidade' %}"  method="post"> {% csrf_token %}
                                     <input type="hidden" name="id" value = "{{ habilidade.id }}">
                                     {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> exposure_plus_1 </i></button>
                                     {% endif %}
                                 </form>
                             </div>
