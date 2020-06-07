@@ -13,7 +13,7 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
     entidade['ficha'] = ficha_cthulhu
     entidade['porcentagem'] = ficha_cthulhu.calculaPorcentagens()
 
-    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id)
+    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id).order_by('titulo')
     if habilidades.exists():
         entidade['habilidades'] = habilidades
 
