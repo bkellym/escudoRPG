@@ -1,0 +1,278 @@
+{% extends 'core/baseTemplate.html' %}
+
+{% block title %}
+    Ficha | {{ entidade.personagem.nome }}
+{% endblock title %}
+
+{% block conteudo %}
+
+    <div class = "row">
+        <div class = "col s6 amber-text text-lighten-1 esquerda" style="height:250px">
+            <div class="row">
+                <div class = "col s8">
+                    <h5> Nome: {{ entidade.personagem.nome }} </h5>
+                </div>
+                <div class = "col s4">
+                    <h5> Idade: {{entidade.personagem.idade}}</h5>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col s12">
+                    <h5> Ocupação: {{entidade.personagem.ocupacao}}</h5>
+                </div>
+            </div>
+            <br> <br>
+            <div class = 'row' style="margin-bottom:20px;">
+                <div class = 'col s2 campo'> Vida: </div>
+                <div class = 'col s1'>
+                    <form action="{% url 'diminui_pontos_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                        <input type="hidden" name="value" value = "1">
+                        <button type="submit" value="-">-</button>
+                    </form>
+                </div>
+                <div class = 'col s7 valor porcentagem black-text'>
+                    <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vida }}%;">
+                        {{entidade.ficha.pontos_vida}} / {{entidade.ficha.pontos_vida_max}}
+                    </div>
+                </div>
+                <div class = 'col s1'>
+                    <form action="{% url 'aumenta_pontos_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                        <input type="hidden" name="value" value = "1">
+                        <button type="submit" value="+">+</button>
+                    </form>
+                </div>
+            </div>
+            <div class = 'row' style="margin-bottom:20px;">
+                <div class = 'col s2 campo'> Sanidade: </div>
+                <div class = 'col s1'>
+                    <form action="{% url 'diminui_sanidade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                        <input type="hidden" name="value" value = "1">
+                        <button type="submit" value="-">-</button>
+                    </form>
+                </div>
+                <div class = 'col s7 valor porcentagem black-text'>
+                    <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.sanidade }}%;">
+                        {{entidade.ficha.sanidade}} / {{entidade.ficha.sanidade_max}}
+                    </div>
+                </div>
+                <div class = 'col s1'>
+                    <form action="{% url 'aumenta_sanidade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                        <input type="hidden" name="value" value = "1">
+                        <button type="submit" value="+">+</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class = "col s6 amber-text text-lighten-1 direita" style="height:250px">
+            <div class="row">
+                <div class="col s4">
+                    <div class="row" style="margin-bottom:15px; margin-top: 23px;">
+                        <div class="col s6">
+                            <h5> FOR: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.FOR }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.FOR_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.FOR_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="col s6">
+                            <h5> CON: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.CON }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.CON_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.CON_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <h5> TAM: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.TAM }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.TAM_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.TAM_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="row" style="margin-bottom:15px; margin-top: 23px;">
+                        <div class="col s6">
+                            <h5> DES: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.DES }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.DES_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.DES_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="col s6">
+                            <h5> APA: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.APA }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.APA_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.APA_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <h5> EDU: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.EDU }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.EDU_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.EDU_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="row" style="margin-bottom:15px; margin-top: 23px;">
+                        <div class="col s6">
+                            <h5> POD: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.POD }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.POD_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.POD_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px;">
+                        <div class="col s6">
+                            <h5> CON: </h5>
+                        </div>
+                        <div class="col s3 normal">
+                            {{ entidade.ficha.CON }}
+                        </div>
+                        <div class="col s2">
+                            <div class="row">
+                                <div class = "col s12 bom">
+                                    {{ entidade.ficha.CON_bom }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col s12 extremo">
+                                    {{ entidade.ficha.CON_extremo }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p> Taxa Movimento: {{ entidade.ficha.taxa_mov }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class = "col s3 amber-text text-lighten-1 direita">
+            <br>
+            {% for habilidade in entidade.habilidades %}
+                <div class="row" style="margin-bottom:12px">
+                    <div class="col s7">
+                        {{ habilidade.titulo }}
+                    </div>
+                    <div class="col s2 normal">
+                        {{ habilidade.normal }}
+                    </div>
+                    <div class="col s2" style="text-align: center;">
+                        <div class="row">
+                            <div class="col s12 bom">
+                                {{ habilidade.bom }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 extremo">
+                                {{ habilidade.extremo }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class = "col s3 amber-text text-lighten-1 direita">
+
+        </div>
+
+        <div class = "col s3 amber-text text-lighten-1 direita">
+
+        </div>
+
+        <div class = "col s3 amber-text text-lighten-1 direita">
+
+        </div>
+    </div>
+{% endblock conteudo %}

@@ -127,3 +127,18 @@ body {
 .btn-upar:hover{
    background-color:#455a64;
 }
+
+.normal{
+    text-align: center;
+    font-size:25px;
+    border-style: groove none groove groove;
+    border-color: #ffd54f;
+    height:60px;
+    padding-top:6px !important;
+}
+
+.bom, .extremo{
+    border-style: groove;
+    border-color: #ffd54f;
+    height:30px
+}
