@@ -242,7 +242,18 @@
             {% for habilidade in entidade.habilidades %}
                 {% if habilidade.coluna == 1 %}
                 <div class="row" style="margin-bottom:12px">
-                    <div class="col s7">
+                    <div class = 'col s2'>
+                        <form action="{% url 'check_campo_cthulhu' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                            {% if habilidade.checked == True %}
+                                <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
+                            {% endif %}
+                            {% if habilidade.checked == False %}
+                                <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="col s5">
                         {{ habilidade.titulo }}
                     </div>
                     <div class="col s2 normal">
@@ -270,7 +281,18 @@
             {% for habilidade in entidade.habilidades %}
                 {% if habilidade.coluna == 2 %}
                 <div class="row" style="margin-bottom:12px">
-                    <div class="col s7">
+                    <div class = 'col s2'>
+                        <form action="{% url 'check_campo_cthulhu' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                            {% if habilidade.checked == True %}
+                                <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
+                            {% endif %}
+                            {% if habilidade.checked == False %}
+                                <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="col s5">
                         {{ habilidade.titulo }}
                     </div>
                     <div class="col s2 normal">
@@ -298,7 +320,18 @@
             {% for habilidade in entidade.habilidades %}
                 {% if habilidade.coluna == 3 %}
                 <div class="row" style="margin-bottom:12px">
-                    <div class="col s7">
+                    <div class = 'col s2'>
+                        <form action="{% url 'check_campo_cthulhu' %}"  method="post"> {% csrf_token %}
+                            <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                            {% if habilidade.checked == True %}
+                                <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
+                            {% endif %}
+                            {% if habilidade.checked == False %}
+                                <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="col s5">
                         {{ habilidade.titulo }}
                     </div>
                     <div class="col s2 normal">

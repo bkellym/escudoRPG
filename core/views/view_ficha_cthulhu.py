@@ -50,3 +50,18 @@ def diminui_sanidade(request, pk):
     ficha_cthulhu.sanidade_update(value, SUBTRACAO)
 
     return redirect('/ficha_cthulhu/' + str(pk))
+
+def check_campo_cthulhu(request):
+    if request.method == "POST":
+        id = request.POST['id']
+
+        habilidade_cthulhu = Habilidade_Cthulhu.objects.get(id=id)
+
+        if habilidade_cthulhu.checked:
+            habilidade_cthulhu.checked = False
+        else:
+            habilidade_cthulhu.checked = True
+
+        habilidade_cthulhu.save()
+
+        return redirect('/ficha_cthulhu/' + str(habilidade_cthulhu.ficha.id_personagem.id))

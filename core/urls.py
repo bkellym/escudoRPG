@@ -6,6 +6,7 @@ urlpatterns = [
     path('ficha_cthulhu/<int:pk>/', views.ficha_cthulhu, name='ficha_cthulhu'),
     path('subir_nivel/<int:pk>/', views.ficha_update, name='subir_nivel'),
     path('check_campo/', views.check_campo, name='check_campo'),
+    path('check_campo_cthulhu/', views.check_campo_cthulhu, name='check_campo_cthulhu'),
     path('upar_habilidade/', views.upar_habilidade, name='upar_habilidade'),
     path('upar_virtude/', views.upar_virtude, name='upar_virtude'),
     path('aumenta_vida/<int:pk>', views.aumenta_vida, name='aumenta_vida'),
