@@ -2,6 +2,10 @@ from django.db import models
 
 class Extra(models.Model):
 
+    class Meta:
+        verbose_name = ('extra')
+        verbose_name_plural = ('extras')
+
     class Tipo(models.IntegerChoices):
         DISCIPLINA = 1
         ANTECENDENTE = 2

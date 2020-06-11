@@ -3,6 +3,10 @@ from django.db import models
 
 class Habilidade_Cthulhu(models.Model):
 
+    class Meta:
+        verbose_name = ('habilidade_cthulhu')
+        verbose_name_plural = ('habilidades_cthulhu')
+
     class Coluna(models.IntegerChoices):
         COLUNA_1 = 1
         COLUNA_2 = 2
