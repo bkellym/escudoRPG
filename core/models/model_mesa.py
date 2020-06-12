@@ -9,9 +9,8 @@ class Mesa(models.Model):
 
 
     class Sistema(models.IntegerChoices):
-        TALENTO = 1
-        PERICIA = 2
-        CONHECIMENTO = 3
+        VAMPIRO = 1
+        CTHULHU = 2
 
     titulo = models.CharField(max_length=200)
     sistema = models.IntegerField(choices=Sistema.choices, null=False)

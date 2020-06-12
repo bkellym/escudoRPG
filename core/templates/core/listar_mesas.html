@@ -23,8 +23,13 @@
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
                     <span class="card-title"> {{ mesa.titulo }} </span>
-                    <p> {{ mesa.sistema }} </p>
-                    <p> {{ mesa.mestre }} </p>
+                    {% if mesa.sistema == 1 %}
+                        <p> Vampiro a Máscara </p>
+                    {% endif %}
+                    {% if mesa.sistema == 2 %}
+                        <p> O Chamado de Cthulhu </p>
+                    {% endif %}
+                    <p> Mestre: {{ mesa.mestre }} </p>
                 </div>
                 <div class="card-action">
                     <a href="#">This is a link</a>
