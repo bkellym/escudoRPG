@@ -14,6 +14,7 @@ class Personagem(models.Model):
     ocupacao = models.CharField(max_length=100, null=True, blank=True)
     senhor = models.CharField(max_length=150, null=True, blank=True)
     conceito = models.CharField(max_length=150, null=True, blank=True)
+    mesa = models.ForeignKey('Mesa', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.nome
