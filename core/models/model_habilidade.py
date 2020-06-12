@@ -6,6 +6,7 @@ class Habilidade(models.Model):
     class Meta:
         verbose_name = ('habilidade')
         verbose_name_plural = ('habilidades')
+        ordering = ['titulo']
 
     class Tipo(models.IntegerChoices):
         TALENTO = 1

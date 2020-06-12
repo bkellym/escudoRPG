@@ -6,6 +6,7 @@ class Habilidade_Cthulhu(models.Model):
     class Meta:
         verbose_name = ('habilidade_cthulhu')
         verbose_name_plural = ('habilidades_cthulhu')
+        ordering = ['titulo']
 
     class Coluna(models.IntegerChoices):
         COLUNA_1 = 1
