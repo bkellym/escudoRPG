@@ -49,7 +49,7 @@ h5{
 h6, p{
     font-family: 'Josefin Sans', sans-serif;
 }
-body {
+body.fichas {
   background-color: #212121;
 
 }
