@@ -40,10 +40,12 @@ button{
 
 .col-esquerda{
     color: #ffd54f;
+    border-color: #fff8e1;
 }
 
 .col-direita{
     color: #ffd54f;
+    border-color: #fff8e1;
 }
 
 .vcheck {
