@@ -73,7 +73,9 @@ img.token{
     border-width: 4px;
 }
 
-
+.habilidade-cthulhu{
+    font-size: 15pt;
+}
 
 .vcheck {
     border: 1px 0px solid #B4AFA7;
