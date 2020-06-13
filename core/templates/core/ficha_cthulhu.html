@@ -40,11 +40,22 @@
     </div>
 
     <div class = 'row'>
-        <div class = 'col s1'> </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'diminui_pontos_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> - </button>
+            </form>
+        </div>
         <div class = 'col s10 col-valor porcentagem black-text'>
             <div class = 'porcentagem-barra-verde black-text' style="width: {{ entidade.porcentagem.vida }}%;">
                 {{entidade.ficha.pontos_vida}} / {{entidade.ficha.pontos_vida_max}}
             </div>
+        </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'aumenta_pontos_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> + </button>
+            </form>
         </div>
     </div>
 
@@ -53,11 +64,22 @@
     </div>
 
     <div class = 'row'>
-        <div class = 'col s1'> </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'diminui_sanidade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> - </button>
+            </form>
+        </div>
         <div class = 'col s10 col-valor porcentagem black-text'>
             <div class = 'porcentagem-barra-azul black-text' style="width: {{ entidade.porcentagem.sanidade }}%;">
                 {{entidade.ficha.sanidade}} / {{entidade.ficha.sanidade_max}}
             </div>
+        </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'aumenta_sanidade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> + </button>
+            </form>
         </div>
     </div>
     <!---------- Stats Fim ---------->
@@ -246,7 +268,18 @@
     <br>
         {% for habilidade in coluna %}
         <div class="row row-atributo">
-            <div class="col s7" style="margin-top:-10px">
+            <div class = 'col s2 col-btn'>
+                <form action="{% url 'check_campo_cthulhu' %}"  method="post"> {% csrf_token %}
+                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                    {% if habilidade.checked == True %}
+                        <button type="submit" class="btn-alt-stats vcheck"><i class="tiny material-icons"> done_all </i></button>
+                    {% endif %}
+                    {% if habilidade.checked == False %}
+                        <button class="btn-alt-stats" type="submit"> <i class="tiny material-icons"> done </i> </button>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col s5" style="margin-top:-5px">
                 <h4 class = "habilidade-cthulhu"> {{ habilidade.titulo }} </h4>
             </div>
             <div class="col s2 normal">
@@ -265,6 +298,7 @@
                 </div>
             </div>
         </div>
+        <br>
     {% endfor %}
 </div>
 {% endfor %}

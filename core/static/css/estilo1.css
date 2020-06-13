@@ -13,9 +13,22 @@ button{
     background-color:#212121;
 }
 
+a{
+    color: #ffd54f;
+}
+
 .sidenav{
     background-color:#424242;
     color: #cfd8dc;
+}
+
+.modal{
+    background-color:#37474f;
+}
+
+.modal-footer{
+    background-color:#263238 !important;
+    color: #000000;
 }
 
 .card{
