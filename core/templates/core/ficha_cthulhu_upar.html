@@ -29,7 +29,7 @@
     </a>
 </li>
 <li>
-    <a class="btn" href="{% url 'subir_nivel_cthulhu' entidade.personagem.id %}">  Subir Nível
+    <a class="btn" href="{% url 'ficha_cthulhu' entidade.personagem.id %}">  Modo Jogo
         <i class="material-icons left" style="margin-right:1px">format_list_bulleted</i>
     </a>
 </li>
@@ -273,19 +273,14 @@
     <br>
         {% for habilidade in coluna %}
         <div class="row row-atributo">
-            <div class = 'col s2 col-btn'>
-                <form action="{% url 'check_campo_cthulhu' %}"  method="post"> {% csrf_token %}
-                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
-                    {% if habilidade.checked == True %}
-                        <button type="submit" class="btn-alt-stats vcheck"><i class="tiny material-icons"> done_all </i></button>
-                    {% endif %}
-                    {% if habilidade.checked == False %}
-                        <button class="btn-alt-stats" type="submit"> <i class="tiny material-icons"> done </i> </button>
-                    {% endif %}
-                </form>
-            </div>
-            <div class="col s5" style="margin-top:-5px">
-                <h4 class = "habilidade-cthulhu"> {{ habilidade.titulo }} </h4>
+            <div class="col s7" style="margin-top:-5px">
+                {% if habilidade.checked %}
+                    <a class="habilidade-cthulhu modal-trigger" style="text-decoration:none; color: #26a69a;"
+                       href="#{{ habilidade.id }}">{{ habilidade.titulo }} </a>
+                {% endif %}
+                {% if not habilidade.checked %}
+                    <h4 class = "habilidade-cthulhu"> {{ habilidade.titulo }} </h4>
+                {% endif %}
             </div>
             <div class="col s2 normal">
                 {{ habilidade.normal }}
@@ -303,7 +298,37 @@
                 </div>
             </div>
         </div>
-        <br>
+    <br>
+    <!-- Modal Structure -->
+    <div id="{{ habilidade.id }}" class="modal">
+        <div class="modal-content">
+            <h4> Melhorar Habilidade {{ habilidade.titulo }} </h4>
+            <p> Faça um teste e caso você falhe, ou seja tire mais que {{ habilidade.normal }},
+                você pode subir de nível da habilidade, caso contrário, desmarque a habilidade
+                e espere até a próxima oportunidade!</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#upar_{{ habilidade.id }}" class="modal-close waves-effect waves-green btn modal-trigger"> Subir Nível </a>
+            <a class="modal-close waves-effect waves-green btn" href="{% url 'desmarcar' habilidade.id %}"> Desmarcar </a>
+            <a href="#!" class="modal-close waves-effect waves-green btn"> Cancelar </a>
+        </div>
+    </div>
+
+
+    <!-- Modal Structure -->
+    <div id="upar_{{ habilidade.id }}" class="modal">
+        <form action="{% url 'subir_nivel_habilidade' %}"  method="post"> {% csrf_token %}
+            <div class="modal-content">
+                <h4> Agora role um d10! </h4>
+                <p> O resultado do dado determina quanto você vai aumentar na habilidade, insira aqui e estará tudo salvo. </p>
+                <input type="hidden" name="id" value="{{ habilidade.id }}">
+                <input type="number" name="value">
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-green btn" type="submit"> Salvar </button>
+            </div>
+        </form>
+    </div>
     {% endfor %}
 </div>
 {% endfor %}

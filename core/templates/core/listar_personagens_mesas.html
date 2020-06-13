@@ -1,0 +1,30 @@
+{% extends 'core/baseTemplate.html' %}
+
+{% block title %}
+    Personagens
+{% endblock title %}
+
+{% block menu %}
+    <li><a class="btn btn-menu" href="{% url 'listar_mesas' %}"> Mesas </a></li>
+    <li><a class="btn disabled" href="#!">  Personagens <i class="material-icons right">new_releases</i> </a></li>
+    <li><a class="btn disabled" href="#!">  Configurações <i class="material-icons right">new_releases</i> </a></li>
+{% endblock %}
+
+{% block conteudo %}
+    {% for personagem in personagens %}
+    <div class="card">
+        <div class="card-content white-text">
+            <span class="card-title"> {{ personagem.nome }} </span>
+        </div>
+        <div class="card-action">
+            {% if personagem.mesa.sistema == 1 %}
+                <a href="{% url 'ficha' personagem.id %}"> Entrar </a>
+            {% endif %}
+            {% if personagem.mesa.sistema == 2 %}
+                <a href="{% url 'ficha_cthulhu' personagem.id %}"> Entrar </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

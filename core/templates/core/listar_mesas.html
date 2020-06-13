@@ -1,0 +1,32 @@
+{% extends 'core/baseTemplate.html' %}
+
+{% block title %}
+    Mesas
+{% endblock title %}
+
+{% block menu %}
+    <li><a class="btn btn-menu" href="{% url 'listar_mesas' %}"> Mesas </a></li>
+    <li><a class="btn disabled" href="#!">  Personagens <i class="material-icons right">new_releases</i> </a></li>
+    <li><a class="btn disabled" href="#!">  Configurações <i class="material-icons right">new_releases</i> </a></li>
+{% endblock %}
+
+{% block conteudo %}
+    {% for mesa in mesas %}
+    <div class="card">
+        <div class="card-content white-text">
+            <span class="card-title"> {{ mesa.titulo }} </span>
+            {% if mesa.sistema == 1 %}
+                <p> Vampiro a Máscara </p>
+            {% endif %}
+            {% if mesa.sistema == 2 %}
+                <p> O Chamado de Cthulhu </p>
+            {% endif %}
+            <p> Mestre: {{ mesa.mestre }} </p>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'personagens' mesa.id %}"> Entrar </a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

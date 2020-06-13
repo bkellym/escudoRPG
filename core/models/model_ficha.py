@@ -4,6 +4,11 @@ SOMA = '+'
 SUBTRACAO = '-'
 
 class Ficha(models.Model):
+
+    class Meta:
+        verbose_name = ('ficha')
+        verbose_name_plural = ('fichas')
+
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 
     forca_vontade = models.IntegerField(null=False, default=0)

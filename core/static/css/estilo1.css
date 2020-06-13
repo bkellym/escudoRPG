@@ -1,0 +1,90 @@
+/* Configurações de Cores */
+
+html, body{
+    width:100%;
+    height: 100%;
+}
+
+body{
+    background-color:#212121;
+}
+
+button{
+    background-color:#212121;
+}
+
+a{
+    color: #ffd54f;
+}
+
+.sidenav{
+    background-color:#424242;
+    color: #cfd8dc;
+}
+
+.modal{
+    background-color:#37474f;
+}
+
+.modal-footer{
+    background-color:#263238 !important;
+    color: #000000;
+}
+
+.card{
+    background-color:#37474f;
+}
+
+.btn-menu{
+    background-color:#00695c;
+}
+
+.title-session {
+    color: #FE4A49;
+}
+
+.subtitle-session{
+    color: #D6D6D6;
+}
+
+.col-valor{
+    border-color: #B4AFA7;
+}
+
+.col-esquerda{
+    color: #ffd54f;
+    border-color: #fff8e1;
+}
+
+.col-direita{
+    color: #ffd54f;
+    border-color: #fff8e1;
+}
+
+.vcheck {
+    background-color:#558b2f;
+}
+
+.porcentagem{
+    background-color: #e0e0e0;
+}
+
+.porcentagem-barra-vermelha{
+    background-color: #d32f2f;
+}
+
+.porcentagem-barra-azul{
+    background-color: #1976d2;
+}
+
+.porcentagem-barra-verde{
+    background-color: #388e3c;
+}
+
+#btn-open-menu{
+    background-color:#00695c;
+}
+
+.normal, .bom, .extremo{
+    border-color: #bdbdbd ;
+}
