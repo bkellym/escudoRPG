@@ -36,6 +36,26 @@ def ficha(request, pk, template_name="core/ficha.html"):
     if inventario.exists():
         entidade['inventario'] = inventario
 
+    descricoes = []
+    descricoes_temp = Descricao.objects.all().filter()
+    for disciplina in disciplinas:
+        for descricao in descricoes_temp:
+            if int(descricao.nivel) <= int(disciplina.valor) and int(descricao.tipo == disciplina.tipo)\
+                    and disciplina.titulo.lower() == descricao.titulo.lower():
+                descricoes.append(descricao)
+
+    for qualidade in qualidades:
+        for descricao in descricoes_temp:
+            if int(descricao.tipo == qualidade.tipo) and qualidade.titulo.lower() == descricao.titulo.lower():
+                descricoes.append(descricao)
+
+    for defeito in defeitos:
+        for descricao in descricoes_temp:
+            if int(descricao.tipo == defeito.tipo) and defeito.titulo.lower() == descricao.titulo.lower():
+                descricoes.append(descricao)
+
+    entidade['descricoes'] = descricoes
+
     entidade['imagem'] = "img/token_" + str(personagem.pk) + ".png"
 
     return render(request, template_name, {'entidade': entidade})
