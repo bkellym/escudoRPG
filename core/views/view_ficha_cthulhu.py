@@ -42,54 +42,38 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
 
     return render(request, template_name, {'entidade': entidade})
 
+def ficha_cthulhu_upar(request, pk, template_name="core/ficha_cthulhu_upar.html"):
+    entidade = {}
+    personagem = get_object_or_404(Personagem, pk=pk)
 
-def aumenta_pontos_vida(request, pk):
-    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
-    value = int(request.GET.get('value'))
+    entidade['personagem'] = personagem
+    ficha_cthulhu = Ficha_Cthulhu.objects.get(id_personagem=personagem.pk)
+    entidade['ficha'] = ficha_cthulhu
+    entidade['porcentagem'] = ficha_cthulhu.calculaPorcentagens()
 
-    ficha_cthulhu.vida_update(value, SOMA)
+    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id).order_by('titulo')
+    if habilidades.exists():
+        total = len(habilidades)
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+        coluna1 = []
+        for i in range (0, floor(total/4)):
+            coluna1.append(habilidades[i])
 
+        coluna2 = []
+        for i in range(floor(total / 4), 2 * floor(total / 4)):
+            coluna2.append(habilidades[i])
 
-def diminui_pontos_vida(request, pk):
-    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
-    value = int(request.GET.get('value'))
+        coluna3 = []
+        for i in range(2 * floor(total / 4), 3 * floor(total / 4)):
+            coluna3.append(habilidades[i])
 
-    ficha_cthulhu.vida_update(value, SUBTRACAO)
+        coluna4 = []
+        for i in range(3 * floor(total / 4), total):
+            coluna4.append(habilidades[i])
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+        colunas = [coluna1, coluna2, coluna3, coluna4]
 
+        entidade['colunas'] = colunas
+        entidade['habilidades'] = habilidades
 
-def aumenta_sanidade(request, pk):
-    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
-    value = int(request.GET.get('value'))
-
-    ficha_cthulhu.sanidade_update(value, SOMA)
-
-    return redirect('/ficha_cthulhu/' + str(pk))
-
-
-def diminui_sanidade(request, pk):
-    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
-    value = int(request.GET.get('value'))
-
-    ficha_cthulhu.sanidade_update(value, SUBTRACAO)
-
-    return redirect('/ficha_cthulhu/' + str(pk))
-
-
-def check_campo_cthulhu(request):
-    if request.method == "POST":
-        id = request.POST['id']
-
-        habilidade_cthulhu = Habilidade_Cthulhu.objects.get(id=id)
-
-        if habilidade_cthulhu.checked:
-            habilidade_cthulhu.checked = False
-        else:
-            habilidade_cthulhu.checked = True
-
-        habilidade_cthulhu.save()
-
-        return redirect('/ficha_cthulhu/' + str(habilidade_cthulhu.ficha.id_personagem.id))
+    return render(request, template_name, {'entidade': entidade})
