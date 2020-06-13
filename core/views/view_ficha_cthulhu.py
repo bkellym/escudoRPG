@@ -1,4 +1,4 @@
-from math import ceil
+from math import ceil, floor
 
 from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
@@ -20,19 +20,19 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
         total = len(habilidades)
 
         coluna1 = []
-        for i in range (0, ceil(total/4)):
+        for i in range (0, floor(total/4)):
             coluna1.append(habilidades[i])
 
         coluna2 = []
-        for i in range(ceil(total / 4), 2 * ceil(total / 4)):
+        for i in range(floor(total / 4), 2 * floor(total / 4)):
             coluna2.append(habilidades[i])
 
         coluna3 = []
-        for i in range(2 * ceil(total / 4), 3 * ceil(total / 4)):
+        for i in range(2 * floor(total / 4), 3 * floor(total / 4)):
             coluna3.append(habilidades[i])
 
         coluna4 = []
-        for i in range(3 * ceil(total / 4), total):
+        for i in range(3 * floor(total / 4), total):
             coluna4.append(habilidades[i])
 
         colunas = [coluna1, coluna2, coluna3, coluna4]
