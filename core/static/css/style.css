@@ -1,144 +1,157 @@
-button {
-    border: 1.5   0px solid #B4AFA7;
-    border-radius: 4px;
-    background-color:#212121;
-    text-align:center;
-    color:#ffd54f;
-    padding:5 5 5 5px;
-    transition-duration: 0.4s;
+/* Configurações de Posicionamento */
+.container{
+    width: 90%;
+    max-width: 1480px;
 }
+
+.row-menu{
+    padding-left:  0px;
+    padding-right: 0px;
+    margin-bottom: 8px;
+}
+
+.row-title-barra{
+    margin-top:8px;
+    margin-bottom:5px;
+}
+
+.row-atributo{
+    margin:10px 0px 0px 0px;
+}
+
+.item-menu{
+    margin:4px 0px 4px 0px;
+}
+
+img.token{
+    width: 110%;
+}
+
+#btn-open-menu{
+    position: absolute;
+    top: 2.5%;
+    left: 15px;
+}
+
+.col-btn{
+    padding:0px !important;
+}
+
+.btn-alt-stats{
+    width:80%;
+    margin-left:10%;
+}
+
+.title-session{
+    margin-bottom: 15px;
+    text-align:center;
+}
+.subtitle-session{
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+.col-titulo{
+    font-family: 'Oswald', sans-serif;
+}
+
+.col-valor{
+    font-family: 'Odibee Sans', cursive;
+    border-style: outset;
+    border-width: 1.5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.col-esquerda{
+    border-style: double;
+    border-width: 4px 0px 4px 4px;
+}
+
+.col-direita{
+    border-style: double;
+    border-width: 4px;
+}
+
+
+
 .vcheck {
-    border: 1.5   0px solid #B4AFA7;
+    border: 1px 0px solid #B4AFA7;
     border-radius: 4px;
-    background-color:#008000;
     text-align:center;
     color:#ffd54f;
     padding:5 5 5 5px;
     transition-duration: 0.4s;
 }
 
-.xcheck{
-    border: 1.5   0px solid #B4AFA7;
-    border-radius: 4px;
-    background-color:red;
-    text-align:center;
-    color:#ffd54f;
-    padding:5 5 5 5px;
-    transition-duration: 0.4s;
+.porcentagem{
+    height: 26px;
+    padding: 0px !important;
 }
 
-button:hover {
+.row-valores{
+    margin-bottom:7px;
+    padding:0px;
+}
+
+.normal, .bom, .extremo{
+    height:40px;
+    font-size:20pt;
+    text-align: center;
+    margin: -10px 0px 0px 0px;
+    border-style: groove none groove groove;
+    border-width:1.5px;
+    font-family: 'Odibee Sans', cursive;
+}
+
+.bom, .extremo{
+    height:20px;
+    font-size:10pt;
+    border-style: groove;
+    margin: -10px 0px 0px 0px;
+}
+.extremo{
+    margin: -20px 0px 0px 0px;
+    border-style: none groove groove groove;
+}
+
+button {
+    text-align:center;
+    color:#ffd54f;
+    border: 1.5 0px solid #B4AFA7;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
 button:active {
   background-color: #212121;
   transform: translateY(4px);
 }
-.esquerda, .direita {
-    border-style: double;
-    padding-right:3px;
-}
-hr{
-    border: 1px solid #ffd54f ;
+
+h1{
+    margin:0px;
+    font-size: 20pt;
+    text-align:right;
 }
 
-h5{
-    font-family: 'Josefin Sans', sans-serif;
+h2{
+    margin:0px;
+    font-size: 12pt;
+    text-align:right;
 }
 
-h6, p{
-    font-family: 'Josefin Sans', sans-serif;
-}
-body.fichas {
-  background-color: #212121;
-
-}
-
-.container {
-  width: 99%;
-}
-
-.row {
-  margin-bottom: -15px;
-  margin-top: 0px;
-}
-
-.title-session {
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom: 15px;
-  text-align:center;
-  color: #FE4A49;
-}
-.subtitle-session{
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom: 15px;
-    text-align:center;
-    color: #D6D6D6;
-}
-
-.linha {
-  margin-bottom: 12px;
-}
-
-.campo {
-  font-family: 'Lora', serif;
-}
-
-.valor{
-    border-style: outset;
-    border-color: #B4AFA7;
-    border-width: 2.5px;
-    margin-right: -2px;
+h3{
+    margin:0px 0px 5px 0px;
+    font-size: 14pt;
     text-align:center;
 }
 
-#token {
-    width: 80%;
+h4{
+    margin:0px 0px 0px 0px;
+    font-size: 18pt;
 }
 
-.porcentagem{
-    background-color: #e0e0e0;
-    height: 26px;
-    padding: 0px !important;
-}
-
-.porcentagem_barra{
-    background-color: #e57373;
-    height: 20px;
-    margin-top: 1px;
-}
-
-.atributo{
-    font-size:11pt;
-    font-family: 'Lora', serif;
-}
-
-.btn-upar{
-    position: fixed;
-	width: 150px;
-	top: 5px;
-	right: 2.8%;
-	color:#ffe082;
-	background-color:#263238;
-}
-
-.btn-upar:hover{
-   background-color:#455a64;
-}
-
-.normal{
-    text-align: center;
-    font-size:25px;
-    border-style: groove none groove groove;
-    border-color: #ffd54f;
-    height:60px;
-    padding-top:6px !important;
-}
-
-.bom, .extremo{
-    border-style: groove;
-    border-color: #ffd54f;
-    height:30px
+h1, h2, h3, h4, h5, h6, p{
+    font-family: 'Josefin Sans', sans-serif;
 }

@@ -4,327 +4,369 @@
     Ficha | {{ entidade.personagem.nome }}
 {% endblock title %}
 
+{% block menu %}
+<br>
+<div class="container">
+    <div class="row row-menu">
+        <div class="col s4">
+                <img class="token" src=" /static/{{ entidade.imagem }}">
+        </div>
+        <div class="col s8">
+            <h1> {{ entidade.personagem.nome }} </h1>
+            <h2> {{ entidade.ficha.experiencia }}xp </h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row row-menu">
+        <div class="col s12">
+            <p class="item-menu"> Comportamento: {{entidade.personagem.comportamento}}</p>
+        </div>
+        <div class="col s12">
+            <p class="item-menu"> Natureza: {{entidade.personagem.natureza}}</p>
+        </div>
+        <div class="col s12">
+            <p class="item-menu"> Clã: {{entidade.personagem.cla}}</p>
+        </div>
+        <div class="col s12">
+            <p class="item-menu"> Idade: {{entidade.personagem.idade}}</p>
+        </div>
+    </div>
+    <hr>
+</div>
+<li>
+    <a class="btn btn-menu" href="{% url 'listar_mesas' %}">  Mesas
+        <i class="material-icons white-text left">format_list_bulleted</i>
+    </a>
+</li>
+<li>
+    <a class="btn btn-menu" href="{% url 'subir_nivel' entidade.personagem.id %}">  Modo Melhora
+        <i class="material-icons white-text left">file_upload</i>
+    </a>
+</li>
+{% endblock %}
+
 {% block conteudo %}
 
-    <a class="waves-effect waves-light btn btn-upar" href="{% url 'subir_nivel' entidade.personagem.id %}"> Upar </a>
+<!---------- Início Primeira Coluna ---------->
+<div class="col s4 col-esquerda">
 
-    <!-- Inicio Primeira Coluna -->
-    <div class="col s5 grey darken-4 amber-text text-lighten-1 esquerda " style="height: 100%">
-        <div class="row">
-            <div class="col s3">
-                    <img style = 'width: 110%; margin-top: 5px;' src=" /static/{{ entidade.imagem }}">
-            </div>
-            <div class="col s9" style = 'margin-left: 0px;'>
-                <h5> Nome: {{ entidade.personagem.nome }} | {{ entidade.ficha.experiencia }}xp</h5>
-                <hr>
-                <div class="row">
-                    <div class="col s6 atributo">
-                        <p> Natureza: {{entidade.personagem.natureza}}</p>
-                        <p> Idade: {{entidade.personagem.idade}}</p>
-                    </div>
-                    <div class="col s6 atributo">
-                        <p> Comportamento: {{entidade.personagem.comportamento}}</p>
-                        <p> Clã: {{entidade.personagem.cla}}</p>
-                    </div>
-                </div>
+    <!---------- Stats Inicio ---------->
+    <div class="row row-title-barra">
+        <div class = 'col s12'> <h3> Vitalidade </h3> </div>
+    </div>
+    <div class="row">
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'diminui_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> - </button>
+            </form>
+        </div>
+        <div class = 'col s10 col-valor porcentagem black-text'>
+            <div class = 'porcentagem-barra-verde black-text' style="width: {{ entidade.porcentagem.vitalidade }}%;">
+                {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}
             </div>
         </div>
-        <hr>
-        <br>
-        <div class="row">
-            <div class="col s12">
-                <div class = 'row'>
-                    <div class = 'col s4 campo'> Vitalidade: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem black-text'>
-                        <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vitalidade }}%;">
-                            {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}
-                        </div>
-                    </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                    </div>
-                </div>
-                <br>
-                <div class = 'row'>
-                    <div class = 'col s4 campo'> Pontos de Sangue: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem'>
-                        <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.sangue }}%;">
-                            {{entidade.ficha.pontos_sangue}} / {{entidade.ficha.pontos_sangue_max}}
-                        </div>
-                    </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                    </div>
-                </div>
-                <br>
-                <div class = 'row'>
-                    <div class = 'col s4 campo'> Força de Vontade: </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'diminui_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="-">-</button>
-                        </form>
-                    </div>
-                    <div class = 'col s5 valor porcentagem'>
-                        <div class = 'porcentagem_barra black-text' style="width: {{ entidade.porcentagem.vontade }}%;">
-                            {{entidade.ficha.forca_vontade}} / {{entidade.ficha.forca_vontade_max}}
-                        </div>
-                    </div>
-                    <div class = 'col s1'>
-                        <form action="{% url 'aumenta_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
-                            <input type="hidden" name="value" value = "1">
-                            <button type="submit" value="+">+</button>
-                        </form>
-                        <br>
-                    </div>
-                </div>
-                <br>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'aumenta_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="+"> + </button>
+            </form>
+        </div>
+    </div>
+    <div class="row row-title-barra">
+        <div class = 'col s12'> <h3> Pontos de Sangue </h3> </div>
+    </div>
+    <div class = 'row'>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'diminui_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> - </button>
+            </form>
+        </div>
+        <div class = 'col s10 col-valor porcentagem'>
+            <div class = 'porcentagem-barra-vermelha black-text' style="width: {{ entidade.porcentagem.sangue }}%;">
+                {{entidade.ficha.pontos_sangue}} / {{entidade.ficha.pontos_sangue_max}}
             </div>
         </div>
-        <hr>
-        <h5 class = 'title-session'>  Atributos  </h5>
-        <div class = 'row'>
-            <div class = 'col s4'>
-                <h6 class = 'subtitle-session'> Físicos </h6>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Força: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.forca}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Destreza: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.destreza}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Vigor: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.vigor}} </div>
-                </div>
-            </div>
-            <div class = 'col s4'>
-                <h6 class = 'subtitle-session'> Sociais </h6>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Carisma: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.carisma}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Manipulação: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.manipulacao}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Aparência: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.aparencia}} </div>
-                </div>
-            </div>
-            <div class = 'col s4'>
-                <h6 class = 'subtitle-session'> Mentais </h6>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Percepção: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.percepcao}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Inteligência: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.inteligencia}} </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Raciocínio: </div>
-                    <div class = 'col s3 valor'> {{entidade.ficha.raciocinio}} </div>
-                </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'aumenta_sangue' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="+"> + </button>
+            </form>
+        </div>
+    </div>
+    <div class="row row-title-barra">
+        <div class = 'col s12'> <h3> Força de Vontade </h3> </div>
+    </div>
+    <div class = 'row'>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'diminui_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="-"> - </button>
+            </form>
+        </div>
+        <div class = 'col s10 col-valor porcentagem'>
+            <div class = 'porcentagem-barra-azul black-text' style="width: {{ entidade.porcentagem.vontade }}%;">
+                {{entidade.ficha.forca_vontade}} / {{entidade.ficha.forca_vontade_max}}
             </div>
         </div>
-        <br>
-        <hr>
-        <h5 class = 'title-session'>  Virtudes  </h5>
-        <div class="row">
-            <div class = 'col s6'>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Consciência: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.consciencia}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> AutoControle: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.autocontrole}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Coragem: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.coragem}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Humanidade: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.humanidade}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-            </div>
+        <div class = 'col s1 col-btn'>
+            <form action="{% url 'aumenta_p_vontade' entidade.personagem.pk %}"  method="get"> {% csrf_token %}
+                <input type="hidden" name="value" value = "1">
+                <button class="btn-alt-stats" type="submit" value="+"> + </button>
+            </form>
+        </div>
+    </div>
+    <!---------- Stats Fim ---------->
 
-            <div class = 'col s6'>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Defesa: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.defesa}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Iniciativa: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.iniciativa}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
-                <div class = 'row linha'>
-                    <div class = 'col s8 campo'> Deslocamento: </div>
-                    <div class = 'col s2 valor'> {{entidade.ficha.deslocamento}} </div>
-                    <div class = 'col s2'> </div>
-                </div>
+    <hr>
+
+    <!---------- Virtudes Início ---------->
+    <h5 class = 'title-session'>  Virtudes  </h5>
+    <div class="row">
+        <div class = 'col s6'>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Consciência </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.consciencia}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> AutoControle </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.autocontrole}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Coragem </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.coragem}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Humanidade </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.humanidade}} </div>
+            </div>
+        </div>
+
+        <div class = 'col s6'>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Defesa </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.defesa}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Iniciativa </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.iniciativa}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Deslocamento </div>
+                <div class = 'col s2 col-valor'> {{entidade.ficha.deslocamento}} </div>
             </div>
         </div>
     </div>
-    <!-- Fim Primeira Coluna -->
+    <!---------- Virtudes Fim ---------->
 
-    <!-- Inicio Segunda Coluna -->
-    <div class="col s7 grey darken-4 amber-text text-lighten-1 direita" style="height: 100%">
-        <div class="row">
-            <h5 class = 'title-session'> Habilidades  </h5>
-            <div class="col s4  grey darken-4">
-                <h6 class = ' subtitle-session'> Talentos </h6>
-                {% for habilidade in entidade.habilidades %}
-                    {% if habilidade.tipo == 1 %}
-                        <div class = 'row linha'>
-                            <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
-                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
-                                    {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
-                                    {% endif %}
-                                </form>
-                            </div>
-                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
-                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+    <!---------- Disciplinas Início ---------->
+    {% if entidade.disciplinas != None %}
+    <hr>
+
+    <div class="row">
+        <h5 class = 'title-session'> Disciplinas </h5>
+        <div class="col s12">
+            {% for disciplina in entidade.disciplinas %}
+            <div class = 'row'>
+                <div class = 'col s9 col-titulo'> {{ disciplina.titulo }} </div>
+                <div class = 'col s2 col-valor'> {{disciplina.valor}} </div>
             </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!---------- Disciplinas Fim ---------->
 
-            <div class="col s4  grey darken-4">
-                <h6 class = 'subtitle-session'> Perícias </h6>
-                {% for habilidade in entidade.habilidades %}
-                    {% if habilidade.tipo == 2 %}
-                        <div class = 'row linha'>
-                            <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
-                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
-                                    {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
-                                    {% endif %}
-                                </form>
-                            </div>
-                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
-                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+    <!---------- Qualidades e Defeitos Início ---------->
+    {% if entidade.qualidades != None or entidade.defeitos != None %}
+    <hr>
+
+    <div class="row">
+        <h5 class = 'title-session'>  Qualidades e Defeitos  </h5>
+        <div class="col s6">
+            {% for qualidade in entidade.qualidades %}
+            <div class = 'row'>
+                <div class = 'col s12 col-titulo'> {{ qualidade.titulo }} </div>
             </div>
+            {% endfor %}
+        </div>
+        <div class="col s6">
+            {% for defeito in entidade.defeitos %}
+            <div class = 'row' style="text-align:right;">
+                <div class = 'col s12 col-titulo'> {{ defeito.titulo }} </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!---------- Qualidades e Defeitos Fim ---------->
 
-            <div class="col s4  grey darken-4">
-                <h6 class = 'subtitle-session'> Conhecimentos </h6>
-                {% for habilidade in entidade.habilidades %}
-                    {% if habilidade.tipo == 3 %}
-                        <div class = 'row linha'>
-                            <div class = 'col s2'>
-                                <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
-                                    <input type="hidden" name="id" value = "{{ habilidade.id }}">
-                                    {% if habilidade.checked == True %}
-                                        <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
-                                    {% endif %}
-                                    {% if habilidade.checked == False %}
-                                        <button type="submit" > <i class="tiny material-icons"> add </i> </button>
-                                    {% endif %}
-                                </form>
-                            </div>
-                            <div class = 'col s6 campo'> {{ habilidade.titulo }}: </div>
-                            <div class = 'col s3 valor'> {{ habilidade.valor }} </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+    <!---------- Antecendentes Início ---------->
+    {% if entidade.antecendentes != none %}
+    <hr>
+
+    <div class="row">
+        <h5 class = 'title-session'>  Antecendentes </h5>
+        <div class="col s12">
+            {% for antecendente in entidade.antecendentes %}
+            <div class = 'row'>
+                <div class = 'col s9 col-titulo'> {{ antecendente.titulo }} </div>
+                <div class = 'col s2 col-valor'> {{antecendente.valor}} </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!---------- Antecendentes Fim ---------->
+
+    <!---------- Inventário Início ---------->
+    {% if entidade.inventario != None %}
+    <hr>
+
+    <div class="row">
+        <div class="col s12">
+            {% for item in entidade.inventario %}
+            <div class = 'row'>
+                <div class = 'col s12 col-titulo'> {{ item.titulo }} </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!---------- Inventário Fim ---------->
+
+</div>
+<!-- Fim Primeira Coluna -->
+
+
+<!-- Inicio Segunda Coluna -->
+<div class="col s8 col-direita">
+
+    <!---------- Atributos Início ---------->
+    <h5 class = 'title-session'>  Atributos  </h5>
+    <div class = 'row'>
+        <div class = 'col s4'>
+            <h6 class = 'subtitle-session'> Físicos </h6>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Força </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.forca}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Destreza </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.destreza}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Vigor </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.vigor}} </div>
             </div>
         </div>
+        <div class = 'col s4'>
+            <h6 class = 'subtitle-session'> Sociais </h6>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Carisma </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.carisma}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Manipulação </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.manipulacao}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Aparência </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.aparencia}} </div>
+            </div>
+        </div>
+        <div class = 'col s4'>
+            <h6 class = 'subtitle-session'> Mentais </h6>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Percepção </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.percepcao}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Inteligência: </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.inteligencia}} </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col s8 col-titulo'> Raciocínio </div>
+                <div class = 'col s3 col-valor'> {{entidade.ficha.raciocinio}} </div>
+            </div>
+        </div>
+    </div>
+    <!---------- Atributos Fim ---------->
 
-        <div class = 'row'>
-            <div class="col s6 grey darken-4">
-                {% if entidade.qualidades != None and entidade.defeitos != None %}
-                <hr>
-                    <h5 class = 'title-session'>  Qualidades e Defeitos  </h5>
-                    <div class="row">
-                        <div class="col s6 grey darken-4 ">
-                            {% for qualidade in entidade.qualidades %}
-                                <div class = 'row linha'>
-                                    <div class = 'col s12 campo amber-2-text'> {{ qualidade.titulo }} </div>
-                                </div>
-                            {% endfor %}
+    <hr>
+
+    <div class="row">
+        <h5 class = 'title-session'> Habilidades  </h5>
+        <div class="col s4">
+            <h6 class = 'subtitle-session'> Talentos </h6>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.tipo == 1 %}
+                    <div class = 'row'>
+                        <div class = 'col s2 col-btn'>
+                            <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                {% if habilidade.checked == True %}
+                                    <button type="submit" class="btn-alt-stats vcheck"><i class="tiny material-icons"> check </i></button>
+                                {% endif %}
+                                {% if habilidade.checked == False %}
+                                    <button class="btn-alt-stats" type="submit"> <i class="tiny material-icons"> add </i> </button>
+                                {% endif %}
+                            </form>
                         </div>
-                        <div class="col s6 grey darken-4">
-                            {% for defeito in entidade.defeitos %}
-                                <div class = 'row linha'>
-                                    <div class = 'col s12 campo amber-2-text'> {{ defeito.titulo }} </div>
-                                </div>
-                            {% endfor %}
-                        </div>
+                        <div class = 'col s7 col-titulo'> {{ habilidade.titulo }} </div>
+                        <div class = 'col s2 col-valor'> {{ habilidade.valor }} </div>
                     </div>
                 {% endif %}
-
-                {% if entidade.antecendentes != none %}
-                    <h5 class = 'title-session'>  Antecendentes </h5>
-                    {% for antecendente in entidade.antecendentes %}
-                        <div class = 'row linha'>
-                            <div class = 'col s9 campo'> {{ antecendente.titulo }}: </div>
-                            <div class = 'col s2 valor'> {{antecendente.valor}} </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col s6 grey darken-4">
-                {% if entidade.disciplinas != none %}
-                    <hr>
-                    <h5 class = 'title-session'> Disciplinas </h5>
-                    {% for disciplina in entidade.disciplinas %}
-                        <div class = 'row linha'>
-                            <div class = 'col s9 campo'> {{ disciplina.titulo }}: </div>
-                            <div class = 'col s2 valor'> {{disciplina.valor}} </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                {% if entidade.inventario != None %}
-                    <h5 class = 'title-session'> Inventário </h5>
-                    {% for item in entidade.inventario %}
-                        <div class = 'row linha'>
-                            <div class = 'col s12 campo'> {{ item.titulo }} </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
+            {% endfor %}
         </div>
 
+        <div class="col s4  grey darken-4">
+            <h6 class = 'subtitle-session'> Perícias </h6>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.tipo == 2 %}
+                    <div class = 'row'>
+                        <div class = 'col s2 col-btn'>
+                            <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                {% if habilidade.checked == True %}
+                                    <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
+                                {% endif %}
+                                {% if habilidade.checked == False %}
+                                    <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                                {% endif %}
+                            </form>
+                        </div>
+                        <div class = 'col s7 col-titulo'> {{ habilidade.titulo }} </div>
+                        <div class = 'col s2 col-valor'> {{ habilidade.valor }} </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="col s4  grey darken-4">
+            <h6 class = 'subtitle-session'> Conhecimentos </h6>
+            {% for habilidade in entidade.habilidades %}
+                {% if habilidade.tipo == 3 %}
+                    <div class = 'row'>
+                        <div class = 'col s2 col-btn'>
+                            <form action="{% url 'check_campo' %}"  method="post"> {% csrf_token %}
+                                <input type="hidden" name="id" value = "{{ habilidade.id }}">
+                                {% if habilidade.checked == True %}
+                                    <button type="submit" class="vcheck"><i class="tiny material-icons"> check </i></button>
+                                {% endif %}
+                                {% if habilidade.checked == False %}
+                                    <button type="submit" > <i class="tiny material-icons"> add </i> </button>
+                                {% endif %}
+                            </form>
+                        </div>
+                        <div class = 'col s7 col-titulo'> {{ habilidade.titulo }} </div>
+                        <div class = 'col s2 col-valor'> {{ habilidade.valor }} </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
-    <!-- Inicio Segunda Coluna -->
+</div>
+<!-- Fim Segunda Coluna -->
 {% endblock conteudo %}

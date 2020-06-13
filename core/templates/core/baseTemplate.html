@@ -4,19 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection">
+    <link rel="stylesheet" href="{% static 'css/estilo1.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+
     <title> {% block title %} {% endblock %} </title>
 </head>
-<body class = 'fichas'>
+
+<body>
+
+    <ul id="slide-out" class="sidenav">
+        {% block menu %}
+        {% endblock %}
+    </ul>
+    <a href="#" id="btn-open-menu" data-target="slide-out" class="sidenav-trigger btn-small btn-floating" style="margin:auto;">
+        <i class="material-icons">chevron_right</i>
+    </a>
+
     <div class = 'container'>
         <div class="row">
-
             {% block conteudo %}
             {% endblock %}
-
         </div>
     </div>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Materialize -->
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, { });
+        });
+    </script>
 </body>
 </html>
