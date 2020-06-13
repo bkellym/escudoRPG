@@ -169,12 +169,47 @@
         <div class="col s12">
             {% for disciplina in entidade.disciplinas %}
             <div class = 'row'>
-                <div class = 'col s9 col-titulo'> {{ disciplina.titulo }} </div>
+                <div class = 'col s9 col-titulo'>
+                    <a class="col-titulo modal-trigger" style="text-decoration:none;"
+                       href="#disciplina_{{ disciplina.id }}">{{ disciplina.titulo }} </a>
+                </div>
                 <div class = 'col s2 col-valor'> {{disciplina.valor}} </div>
             </div>
+
+
+            <!-- Modal Structure -->
+            <div id="disciplina_{{ disciplina.id }}" class="modal modal-fixed-footer">
+                <div class="modal-content">
+
+                    {% for descricao in entidade.descricoes %}
+                        {% if descricao.titulo == disciplina.titulo %}
+                            <h4> {{ descricao.nome }} </h4>
+                            {% if descricao.observacao != None and descricao.observacao != "" %}
+                                <p style="color:#bdbdbd;"> {{ descricao.observacao }} </p>
+                            {% endif %}
+                            {% if descricao.sistema != None and descricao.sistema != "" %}
+                                <p style="color:#81d4fa;"> Sistema: {{ descricao.sistema }} </p>
+                            {% endif %}
+                            {% if descricao.teste != None and descricao.teste != "" %}
+                                <p style="color:#ef9a9a;"> Teste: {{ descricao.teste }} </p>
+                            {% endif %}
+                            {% if descricao.dificuldade != None and descricao.dificuldade != "" %}
+                                <p style="color:#ffe082;"> Dificuldade: {{ descricao.dificuldade }} </p>
+                            {% endif %}
+                            <p style="color:#f5f5f5;"> {{ descricao.descricao }} </p>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn"> Voltar </a>
+                </div>
+            </div>
+
             {% endfor %}
         </div>
     </div>
+
     {% endif %}
     <!---------- Disciplinas Fim ---------->
 
@@ -187,15 +222,53 @@
         <div class="col s6">
             {% for qualidade in entidade.qualidades %}
             <div class = 'row'>
-                <div class = 'col s12 col-titulo'> {{ qualidade.titulo }} </div>
+                <div class = 'col s12 col-titulo'>
+                    <a class="col-titulo modal-trigger" style="text-decoration:none;"
+                       href="#qualidade_{{ qualidade.id }}">{{ qualidade.titulo }} </a>
+                </div>
             </div>
+
+            <!-- Modal Structure -->
+            <div id="qualidade_{{ qualidade.id }}" class="modal">
+                <div class="modal-content">
+                    {% for descricao in entidade.descricoes %}
+                        {% if descricao.titulo == qualidade.titulo %}
+                            <h4> {{ descricao.titulo }} </h4>
+                            {% if descricao.observacao != None and descricao.observacao != "" %}
+                                <p style="color:#bdbdbd;"> {{ descricao.observacao }} </p>
+                            {% endif %}
+                            <p style="color:#f5f5f5;"> {{ descricao.descricao }} </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
             {% endfor %}
         </div>
         <div class="col s6">
             {% for defeito in entidade.defeitos %}
             <div class = 'row' style="text-align:right;">
-                <div class = 'col s12 col-titulo'> {{ defeito.titulo }} </div>
+                <div class = 'col s12 col-titulo'>
+                    <a class="col-titulo modal-trigger" style="text-decoration:none;"
+                       href="#defeito_{{ defeito.id }}">{{ defeito.titulo }} </a>
+                </div>
             </div>
+
+            <!-- Modal Structure -->
+            <div id="defeito_{{ defeito.id }}" class="modal">
+                <div class="modal-content">
+                    {% for descricao in entidade.descricoes %}
+                        {% if descricao.titulo == defeito.titulo %}
+                            <h4> {{ descricao.titulo }} </h4>
+                            {% if descricao.observacao != None and descricao.observacao != "" %}
+                                <p style="color:#bdbdbd;"> {{ descricao.observacao }} </p>
+                            {% endif %}
+                            <p style="color:#f5f5f5;"> {{ descricao.descricao }} </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
             {% endfor %}
         </div>
     </div>
