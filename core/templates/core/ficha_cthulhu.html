@@ -241,119 +241,32 @@
     </div>
 </div>
 
-<div class = "col s3 col-esquerda" style="border-width: 0px 0px 4px 4px;">
+{% for coluna in entidade.colunas %}
+<div class = "col s3 col-esquerda" style="border-width: 0px 2px 4px 4px;">
     <br>
-    {% for habilidade in entidade.habilidades %}
-        {% if habilidade.coluna == 1 %}
-            <div class="row row-atributo">
-                <div class="col s7" style="margin-top:-10px">
-                    <h4> {{ habilidade.titulo }} </h4>
-                </div>
-                <div class="col s2 normal">
-                    {{ habilidade.normal }}
-                </div>
-                <div class="col s2">
-                    <div class="row">
-                        <div class="col s12 bom">
-                            {{ habilidade.bom }}
-                        </div>
+        {% for habilidade in coluna %}
+        <div class="row row-atributo">
+            <div class="col s7" style="margin-top:-10px">
+                <h4> {{ habilidade.titulo }} </h4>
+            </div>
+            <div class="col s2 normal">
+                {{ habilidade.normal }}
+            </div>
+            <div class="col s2">
+                <div class="row">
+                    <div class="col s12 bom">
+                        {{ habilidade.bom }}
                     </div>
-                    <div class="row">
-                        <div class="col s12 extremo">
-                            {{ habilidade.extremo }}
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 extremo">
+                        {{ habilidade.extremo }}
                     </div>
                 </div>
             </div>
-        {% endif %}
+        </div>
     {% endfor %}
 </div>
-
-
-<div class = "col s3 col-esquerda" style="border-width: 0px 0px 4px 4px;">
-    <br>
-    {% for habilidade in entidade.habilidades %}
-        {% if habilidade.coluna == 2 %}
-            <div class="row row-atributo">
-                <div class="col s7" style="margin-top:-10px">
-                    <h4> {{ habilidade.titulo }} </h4>
-                </div>
-                <div class="col s2 normal">
-                    {{ habilidade.normal }}
-                </div>
-                <div class="col s2">
-                    <div class="row">
-                        <div class="col s12 bom">
-                            {{ habilidade.bom }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 extremo">
-                            {{ habilidade.extremo }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>
-
-
-<div class = "col s3 col-esquerda" style="border-width: 0px 0px 4px 4px;">
-    <br>
-    {% for habilidade in entidade.habilidades %}
-        {% if habilidade.coluna == 3 %}
-            <div class="row row-atributo">
-                <div class="col s7" style="margin-top:-10px">
-                    <h4> {{ habilidade.titulo }} </h4>
-                </div>
-                <div class="col s2 normal">
-                    {{ habilidade.normal }}
-                </div>
-                <div class="col s2">
-                    <div class="row">
-                        <div class="col s12 bom">
-                            {{ habilidade.bom }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 extremo">
-                            {{ habilidade.extremo }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>
-
-
-<div class = "col s3 col-esquerda" style="border-width: 0px 4px 4px 4px;">
-    <br>
-    {% for habilidade in entidade.habilidades %}
-        {% if habilidade.coluna == 4 %}
-            <div class="row row-atributo">
-                <div class="col s7" style="margin-top:-10px">
-                    <h4> {{ habilidade.titulo }} </h4>
-                </div>
-                <div class="col s2 normal">
-                    {{ habilidade.normal }}
-                </div>
-                <div class="col s2">
-                    <div class="row">
-                        <div class="col s12 bom">
-                            {{ habilidade.bom }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 extremo">
-                            {{ habilidade.extremo }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>
+{% endfor %}
 
 {% endblock conteudo %}

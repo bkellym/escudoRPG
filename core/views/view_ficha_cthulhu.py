@@ -1,3 +1,5 @@
+from math import ceil
+
 from django.shortcuts import render, get_object_or_404, redirect
 from core.models import *
 
@@ -15,17 +17,40 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
 
     habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id).order_by('titulo')
     if habilidades.exists():
+        total = len(habilidades)
+
+        coluna1 = []
+        for i in range (0, ceil(total/4)):
+            coluna1.append(habilidades[i])
+
+        coluna2 = []
+        for i in range(ceil(total / 4), 2 * ceil(total / 4)):
+            coluna2.append(habilidades[i])
+
+        coluna3 = []
+        for i in range(2 * ceil(total / 4), 3 * ceil(total / 4)):
+            coluna3.append(habilidades[i])
+
+        coluna4 = []
+        for i in range(3 * ceil(total / 4), total):
+            coluna4.append(habilidades[i])
+
+        colunas = [coluna1, coluna2, coluna3, coluna4]
+
+        entidade['colunas'] = colunas
         entidade['habilidades'] = habilidades
 
     return render(request, template_name, {'entidade': entidade})
 
+
 def aumenta_pontos_vida(request, pk):
-    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem = pk)
+    ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
     value = int(request.GET.get('value'))
 
     ficha_cthulhu.vida_update(value, SOMA)
 
     return redirect('/ficha_cthulhu/' + str(pk))
+
 
 def diminui_pontos_vida(request, pk):
     ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
@@ -35,6 +60,7 @@ def diminui_pontos_vida(request, pk):
 
     return redirect('/ficha_cthulhu/' + str(pk))
 
+
 def aumenta_sanidade(request, pk):
     ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
     value = int(request.GET.get('value'))
@@ -43,6 +69,7 @@ def aumenta_sanidade(request, pk):
 
     return redirect('/ficha_cthulhu/' + str(pk))
 
+
 def diminui_sanidade(request, pk):
     ficha_cthulhu: Ficha_Cthulhu = get_object_or_404(Ficha_Cthulhu, id_personagem=pk)
     value = int(request.GET.get('value'))
@@ -50,6 +77,7 @@ def diminui_sanidade(request, pk):
     ficha_cthulhu.sanidade_update(value, SUBTRACAO)
 
     return redirect('/ficha_cthulhu/' + str(pk))
+
 
 def check_campo_cthulhu(request):
     if request.method == "POST":
