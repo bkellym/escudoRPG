@@ -65,6 +65,9 @@
             <div class = 'porcentagem-barra-verde black-text' style="width: {{ entidade.porcentagem.vitalidade }}%;">
                 {{entidade.ficha.vitalidade}} / {{entidade.ficha.vitalidade_max}}
             </div>
+            <div class = 'porcentagem-barra-verde-escuro black-text'
+                 style="right:0.5px; width: {{ entidade.porcentagem.dano_agravado }}%;">
+            </div>
         </div>
         <div class = 'col s1 col-btn'>
             <form action="{% url 'aumenta_vida' entidade.personagem.pk %}"  method="get"> {% csrf_token %}

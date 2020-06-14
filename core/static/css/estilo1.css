@@ -81,8 +81,12 @@ a{
     background-color: #388e3c;
 }
 
+.porcentagem-barra-verde-escuro{
+    background-color: #1b5e20;
+}
+
 #btn-open-menu{
-    background-color:#00695c;
+    background-color: #00695c;
 }
 
 .normal, .bom, .extremo{

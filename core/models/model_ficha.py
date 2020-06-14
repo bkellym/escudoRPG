@@ -16,6 +16,7 @@ class Ficha(models.Model):
     pontos_sangue = models.IntegerField(null=False, default=0)
     pontos_sangue_max = models.IntegerField(null=False, default=0)
     vitalidade = models.IntegerField(null=False, default=0)
+    dano_agravado = models.IntegerField(null=False, default=0)
     vitalidade_max = models.IntegerField(null=False, default=0)
     experiencia = models.IntegerField(null=False, default=0)
 
@@ -74,6 +75,7 @@ class Ficha(models.Model):
         retorno = {}
 
         retorno['vitalidade'] = 100 * (self.vitalidade / self.vitalidade_max)
+        retorno['dano_agravado'] = 100 * (self.dano_agravado / self.vitalidade_max)
         retorno['sangue'] = 100 * (self.pontos_sangue / self.pontos_sangue_max)
         retorno['vontade'] = 100 * (self.forca_vontade / self.forca_vontade_max)
 
@@ -87,7 +89,7 @@ class Ficha(models.Model):
         if operacao == SUBTRACAO:
             vitalidade_nova = self.vitalidade - valor
 
-        if 0 <= vitalidade_nova <= self.vitalidade_max:
+        if 0 <= vitalidade_nova <= (self.vitalidade_max - self.dano_agravado):
             self.vitalidade = vitalidade_nova
             self.save()
 

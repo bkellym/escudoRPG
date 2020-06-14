@@ -87,8 +87,15 @@ img.token{
 }
 
 .porcentagem{
+    position:relative;
     height: 26px;
     padding: 0px !important;
+}
+
+.porcentagem-barra-vermelha, .porcentagem-barra-verde,
+.porcentagem-barra-azul, .porcentagem-barra-verde-escuro{
+    position:absolute;
+    height:22px;
 }
 
 .row-valores{
