@@ -5,6 +5,7 @@ class Personagem(models.Model):
     class Meta:
         verbose_name = ('personagem')
         verbose_name_plural = ('personagens')
+        ordering = ['nome']
 
     nome = models.CharField(max_length=200)
     idade = models.IntegerField(null=True, blank=True)
