@@ -16,7 +16,7 @@ def check_campo(request):
             habilidade.checked = True
         habilidade.save()
 
-        return redirect('/ficha/' + str(habilidade.ficha.id_personagem.id))
+        return redirect('/vampiro/ficha/' + str(habilidade.ficha.id_personagem.id))
 
 
 def upar_habilidade(request):
@@ -39,7 +39,7 @@ def upar_habilidade(request):
             habilidade.save()
             ficha.save()
 
-        return redirect('/subir_nivel/' + str(habilidade.ficha.id_personagem.id))
+        return redirect('/vampiro/subir_nivel/' + str(habilidade.ficha.id_personagem.id))
 
 
 def upar_virtude(request):
@@ -71,11 +71,11 @@ def upar_virtude(request):
 
             ficha_vampiro.coragem = ficha_vampiro.coragem + 1
 
-        if ficha_vampiro.experiencia - custo >= 0:
+        if 0 <= ficha_vampiro.experiencia - custo:
             ficha_vampiro.experiencia = ficha_vampiro.experiencia - custo
             ficha_vampiro.save()
 
-        return redirect('/subir_nivel/' + str(ficha_vampiro.id_personagem.id))
+        return redirect('/vampiro/subir_nivel/' + str(ficha_vampiro.id_personagem.id))
 
 
 def aumenta_vida(request, pk):
@@ -84,7 +84,7 @@ def aumenta_vida(request, pk):
 
     ficha_vampiro.vitalidade_update(value, SOMA)
 
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))
 
 
 def diminui_vida(request, pk):
@@ -92,7 +92,7 @@ def diminui_vida(request, pk):
     value = int(request.GET.get('value'))
 
     ficha_vampiro.vitalidade_update(value, SUBTRACAO)
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))
 
 
 def aumenta_sangue(request, pk):
@@ -100,7 +100,7 @@ def aumenta_sangue(request, pk):
     value = int(request.GET.get('value'))
 
     ficha_vampiro.sangue_update(value, SOMA)
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))
 
 
 def diminui_sangue(request, pk):
@@ -108,7 +108,7 @@ def diminui_sangue(request, pk):
     value = int(request.GET.get('value'))
 
     ficha_vampiro.sangue_update(value, SUBTRACAO)
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))
 
 
 def aumenta_p_vontade(request, pk):
@@ -116,7 +116,7 @@ def aumenta_p_vontade(request, pk):
     value = int(request.GET.get('value'))
 
     ficha_vampiro.vontade_update(value, SOMA)
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))
 
 
 def diminui_p_vontade(request, pk):
@@ -124,4 +124,4 @@ def diminui_p_vontade(request, pk):
     value = int(request.GET.get('value'))
 
     ficha_vampiro.vontade_update(value, SUBTRACAO)
-    return redirect('/ficha/' + str(pk))
+    return redirect('/vampiro/ficha/' + str(pk))

@@ -13,7 +13,7 @@ def aumenta_pontos_vida(request, pk):
 
     ficha_cthulhu.vida_update(value, SOMA)
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+    return redirect('/cthulhu/ficha/' + str(pk))
 
 
 def diminui_pontos_vida(request, pk):
@@ -22,7 +22,7 @@ def diminui_pontos_vida(request, pk):
 
     ficha_cthulhu.vida_update(value, SUBTRACAO)
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+    return redirect('/cthulhu/ficha/' + str(pk))
 
 
 def aumenta_sanidade(request, pk):
@@ -31,7 +31,7 @@ def aumenta_sanidade(request, pk):
 
     ficha_cthulhu.sanidade_update(value, SOMA)
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+    return redirect('/cthulhu/ficha/' + str(pk))
 
 
 def diminui_sanidade(request, pk):
@@ -40,7 +40,7 @@ def diminui_sanidade(request, pk):
 
     ficha_cthulhu.sanidade_update(value, SUBTRACAO)
 
-    return redirect('/ficha_cthulhu/' + str(pk))
+    return redirect('/cthulhu/ficha/' + str(pk))
 
 
 def check_campo_cthulhu(request):
@@ -56,7 +56,7 @@ def check_campo_cthulhu(request):
 
         habilidade_cthulhu.save()
 
-        return redirect('/ficha_cthulhu/' + str(habilidade_cthulhu.ficha.id_personagem.id))
+        return redirect('/cthulhu/ficha/' + str(habilidade_cthulhu.ficha.id_personagem.id))
 
 
 def desmarcar(request, id):
@@ -64,7 +64,7 @@ def desmarcar(request, id):
     habilidade_cthulhu.checked = False
     habilidade_cthulhu.save()
 
-    return redirect('/subir_nivel_cthulhu/' + str(habilidade_cthulhu.ficha.id_personagem.id))
+    return redirect('/cthulhu/subir_nivel/' + str(habilidade_cthulhu.ficha.id_personagem.id))
 
 def subir_nivel_habilidade(request):
     if request.method == "POST":
@@ -78,4 +78,4 @@ def subir_nivel_habilidade(request):
         habilidade_cthulhu.checked = False
         habilidade_cthulhu.save()
 
-        return redirect('/subir_nivel_cthulhu/' + str(habilidade_cthulhu.ficha.id_personagem.id))
+        return redirect('/cthulhu/subir_nivel/' + str(habilidade_cthulhu.ficha.id_personagem.id))
