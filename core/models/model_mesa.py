@@ -1,12 +1,12 @@
 from django.db import models
 
+
 class Mesa(models.Model):
 
     class Meta:
-        verbose_name = ('mesa')
-        verbose_name_plural = ('mesas')
+        verbose_name = 'mesa'
+        verbose_name_plural = 'mesas'
         ordering = ['titulo']
-
 
     class Sistema(models.IntegerChoices):
         VAMPIRO = 1

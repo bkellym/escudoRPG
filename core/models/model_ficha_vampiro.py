@@ -6,8 +6,8 @@ SUBTRACAO = '-'
 
 class Ficha_Vampiro(models.Model):
     class Meta:
-        verbose_name = ('ficha')
-        verbose_name_plural = ('fichas')
+        verbose_name = 'ficha'
+        verbose_name_plural = 'fichas'
 
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 

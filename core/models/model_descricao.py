@@ -1,10 +1,11 @@
 from django.db import models
 
+
 class Descricao(models.Model):
 
     class Meta:
-        verbose_name = ('descricao')
-        verbose_name_plural = ('descricoes')
+        verbose_name = 'descricao'
+        verbose_name_plural = 'descricoes'
 
     class Tipo(models.IntegerChoices):
         DISCIPLINA = 1
@@ -24,4 +25,3 @@ class Descricao(models.Model):
 
     def __str__(self):
         return self.titulo + " | " + str(self.nivel)
-

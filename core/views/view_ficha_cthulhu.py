@@ -1,10 +1,11 @@
-from math import ceil, floor
+from math import floor
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from core.models import *
 
 SOMA = '+'
 SUBTRACAO = '-'
+
 
 def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
     entidade = {}
@@ -20,7 +21,7 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
         total = len(habilidades)
 
         coluna1 = []
-        for i in range (0, floor(total/4)):
+        for i in range(0, floor(total/4)):
             coluna1.append(habilidades[i])
 
         coluna2 = []
@@ -42,6 +43,7 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
 
     return render(request, template_name, {'entidade': entidade})
 
+
 def ficha_cthulhu_upar(request, pk, template_name="core/ficha_cthulhu_upar.html"):
     entidade = {}
     personagem = get_object_or_404(Personagem, pk=pk)
@@ -56,7 +58,7 @@ def ficha_cthulhu_upar(request, pk, template_name="core/ficha_cthulhu_upar.html"
         total = len(habilidades)
 
         coluna1 = []
-        for i in range (0, floor(total/4)):
+        for i in range(0, floor(total/4)):
             coluna1.append(habilidades[i])
 
         coluna2 = []

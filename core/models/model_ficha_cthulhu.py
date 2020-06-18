@@ -7,8 +7,8 @@ SUBTRACAO = '-'
 class Ficha_Cthulhu(models.Model):
 
     class Meta:
-        verbose_name = ('ficha_cthulhu')
-        verbose_name_plural = ('fichas_cthulhu')
+        verbose_name = 'ficha_cthulhu'
+        verbose_name_plural = 'fichas_cthulhu'
 
     id_personagem = models.ForeignKey('Personagem', on_delete=models.CASCADE)
 

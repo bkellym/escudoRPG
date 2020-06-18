@@ -4,8 +4,8 @@ from django.db import models
 class Habilidade(models.Model):
 
     class Meta:
-        verbose_name = ('habilidade')
-        verbose_name_plural = ('habilidades')
+        verbose_name = 'habilidade'
+        verbose_name_plural = 'habilidades'
         ordering = ['titulo']
 
     class Tipo(models.IntegerChoices):
@@ -13,7 +13,7 @@ class Habilidade(models.Model):
         PERICIA = 2
         CONHECIMENTO = 3
 
-    ficha = models.ForeignKey('Ficha', on_delete=models.CASCADE)
+    ficha = models.ForeignKey('Ficha_Vampiro', on_delete=models.CASCADE)
     tipo = models.IntegerField(choices=Tipo.choices)
     titulo = models.CharField(max_length=150, null=True, blank=True)
     valor = models.IntegerField(null=True, blank=False, default=0)
