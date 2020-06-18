@@ -1,18 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from core.models import *
 
 
-def ficha(request, pk, template_name="core/ficha.html"):
+def ficha_vampiro(request, pk, template_name="core/ficha.html"):
     entidade = {}
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha = Ficha.objects.get(id_personagem=personagem.pk)
+    ficha_vampiro: Ficha_Vampiro = Ficha_Vampiro.objects.get(id_personagem=personagem.pk)
 
-    entidade['ficha'] = ficha
-    entidade['porcentagem'] = ficha.calculaPorcentagens()
+    entidade['ficha'] = ficha_vampiro
+    entidade['porcentagem'] = ficha_vampiro.calcula_porcentagens()
 
-    habilidades = Habilidade.objects.all().filter(ficha=ficha.id)
+    habilidades = Habilidade.objects.all().filter(ficha=ficha_vampiro.id)
     if habilidades.exists():
         entidade['habilidades'] = habilidades
 
@@ -66,13 +66,13 @@ def ficha_update(request, pk, template_name="core/ficha_atualizacao.html"):
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha = Ficha.objects.get(id_personagem=personagem.pk)
+    ficha_vampiro: Ficha_Vampiro = Ficha_Vampiro.objects.get(id_personagem=personagem.pk)
 
-    entidade['ficha'] = ficha
-    entidade['porcentagem'] = ficha.calculaPorcentagens()
-    entidade['custo'] = ficha.calculaCustos()
+    entidade['ficha'] = ficha_vampiro
+    entidade['porcentagem'] = ficha_vampiro.calcula_porcentagens()
+    entidade['custo'] = ficha_vampiro.calcula_custos()
 
-    habilidades = Habilidade.objects.all().filter(ficha=ficha.id)
+    habilidades = Habilidade.objects.all().filter(ficha=ficha_vampiro.id)
     if habilidades.exists():
         entidade['habilidades'] = habilidades
 

@@ -11,11 +11,11 @@ def ficha_cthulhu(request, pk, template_name="core/ficha_cthulhu.html"):
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha_cthulhu = Ficha_Cthulhu.objects.get(id_personagem=personagem.pk)
+    ficha_cthulhu: Ficha_Cthulhu = Ficha_Cthulhu.objects.get(id_personagem=personagem.pk)
     entidade['ficha'] = ficha_cthulhu
-    entidade['porcentagem'] = ficha_cthulhu.calculaPorcentagens()
+    entidade['porcentagem'] = ficha_cthulhu.calcula_porcentagens()
 
-    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id).order_by('titulo')
+    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.pk).order_by('titulo')
     if habilidades.exists():
         total = len(habilidades)
 
@@ -47,11 +47,11 @@ def ficha_cthulhu_upar(request, pk, template_name="core/ficha_cthulhu_upar.html"
     personagem = get_object_or_404(Personagem, pk=pk)
 
     entidade['personagem'] = personagem
-    ficha_cthulhu = Ficha_Cthulhu.objects.get(id_personagem=personagem.pk)
+    ficha_cthulhu: Ficha_Cthulhu = Ficha_Cthulhu.objects.get(id_personagem=personagem.pk)
     entidade['ficha'] = ficha_cthulhu
-    entidade['porcentagem'] = ficha_cthulhu.calculaPorcentagens()
+    entidade['porcentagem'] = ficha_cthulhu.calcula_porcentagens()
 
-    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.id).order_by('titulo')
+    habilidades = Habilidade_Cthulhu.objects.all().filter(ficha=ficha_cthulhu.pk).order_by('titulo')
     if habilidades.exists():
         total = len(habilidades)
 

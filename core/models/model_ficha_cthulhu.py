@@ -47,12 +47,9 @@ class Ficha_Cthulhu(models.Model):
     def __str__(self):
         return self.id_personagem.nome
 
-    def calculaPorcentagens(self):
-        retorno = {}
-
-        retorno['vida'] = 100 * (self.pontos_vida / self.pontos_vida_max)
-        retorno['sanidade'] = 100 * (self.sanidade / self.sanidade_max)
-
+    def calcula_porcentagens(self):
+        retorno = {'vida': 100 * (self.pontos_vida / self.pontos_vida_max),
+                   'sanidade': 100 * (self.sanidade / self.sanidade_max)}
         return retorno
 
     def vida_update(self, valor, operacao):

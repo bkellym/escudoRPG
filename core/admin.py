@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Personagem)
-admin.site.register(Ficha)
+admin.site.register(Ficha_Vampiro)
 admin.site.register(Extra)
 admin.site.register(Habilidade)
 admin.site.register(Ficha_Cthulhu)

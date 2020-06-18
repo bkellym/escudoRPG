@@ -1,30 +1,29 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from core.models import *
 
-SOMA = '+'
-SUBTRACAO = '-'
+SOMA: str = '+'
+SUBTRACAO: str = '-'
 
 
 def check_campo(request):
     if request.method == "POST":
         id = request.POST['id']
-
         habilidade = Habilidade.objects.get(id=id)
 
         if habilidade.checked:
             habilidade.checked = False
         else:
             habilidade.checked = True
-
         habilidade.save()
 
         return redirect('/ficha/' + str(habilidade.ficha.id_personagem.id))
+
 
 def upar_habilidade(request):
     if request.method == "POST":
         id = request.POST['id']
         habilidade = Habilidade.objects.get(id=id)
-        ficha = Ficha.objects.get(id=habilidade.ficha.id)
+        ficha = Ficha_Vampiro.objects.get(id=habilidade.ficha.id)
 
         if habilidade.valor == 0:
             custo_xp = 3
@@ -42,84 +41,87 @@ def upar_habilidade(request):
 
         return redirect('/subir_nivel/' + str(habilidade.ficha.id_personagem.id))
 
+
 def upar_virtude(request):
     if request.method == "POST":
         id = int(request.POST['id'])
         campo = request.POST['campo']
-        ficha = get_object_or_404(Ficha, id=id)
+        ficha_vampiro = get_object_or_404(Ficha_Vampiro, id=id)
 
         if campo == "consciencia":
-            custo = ficha.consciencia * 2
-            if ficha.consciencia >= 4:
+            custo = ficha_vampiro.consciencia * 2
+            if ficha_vampiro.consciencia >= 4:
                 custo = custo * 2
 
-            ficha.consciencia = ficha.consciencia + 1
+            ficha_vampiro.consciencia = ficha_vampiro.consciencia + 1
 
         if campo == "autocontrole":
-            custo = ficha.autocontrole * 2
-            if ficha.autocontrole >= 4:
+            custo = ficha_vampiro.autocontrole * 2
+            if ficha_vampiro.autocontrole >= 4:
                 custo = custo * 2
 
-            ficha.autocontrole = ficha.autocontrole + 1
-            ficha.iniciativa = ficha.destreza + ficha.autocontrole
-            ficha.forca_vontade_max = ficha.percepcao + ficha.autocontrole
+            ficha_vampiro.autocontrole = ficha_vampiro.autocontrole + 1
+            ficha_vampiro.iniciativa = ficha_vampiro.destreza + ficha_vampiro.autocontrole
+            ficha_vampiro.forca_vontade_max = ficha_vampiro.percepcao + ficha_vampiro.autocontrole
 
         if campo == "coragem":
-            custo = ficha.coragem * 2
-            if ficha.coragem >= 4:
+            custo = ficha_vampiro.coragem * 2
+            if ficha_vampiro.coragem >= 4:
                 custo = custo * 2
 
-            ficha.coragem = ficha.coragem + 1
+            ficha_vampiro.coragem = ficha_vampiro.coragem + 1
 
-        if ficha.experiencia - custo >= 0:
-            ficha.experiencia = ficha.experiencia - custo
-            ficha.save()
+        if ficha_vampiro.experiencia - custo >= 0:
+            ficha_vampiro.experiencia = ficha_vampiro.experiencia - custo
+            ficha_vampiro.save()
 
-        return redirect('/subir_nivel/' + str(ficha.id_personagem.id))
+        return redirect('/subir_nivel/' + str(ficha_vampiro.id_personagem.id))
+
 
 def aumenta_vida(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem = pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.vitalidade_update(value, SOMA)
+    ficha_vampiro.vitalidade_update(value, SOMA)
 
     return redirect('/ficha/' + str(pk))
 
+
 def diminui_vida(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.vitalidade_update(value, SUBTRACAO)
+    ficha_vampiro.vitalidade_update(value, SUBTRACAO)
     return redirect('/ficha/' + str(pk))
 
 
 def aumenta_sangue(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.sangue_update(value, SOMA)
+    ficha_vampiro.sangue_update(value, SOMA)
     return redirect('/ficha/' + str(pk))
 
 
 def diminui_sangue(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.sangue_update(value, SUBTRACAO)
+    ficha_vampiro.sangue_update(value, SUBTRACAO)
     return redirect('/ficha/' + str(pk))
 
 
 def aumenta_p_vontade(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.vontade_update(value, SOMA)
+    ficha_vampiro.vontade_update(value, SOMA)
     return redirect('/ficha/' + str(pk))
 
 
 def diminui_p_vontade(request, pk):
-    ficha: Ficha = get_object_or_404(Ficha, id_personagem=pk)
+    ficha_vampiro: Ficha_Vampiro = get_object_or_404(Ficha_Vampiro, id_personagem=pk)
     value = int(request.GET.get('value'))
 
-    ficha.vontade_update(value, SUBTRACAO)
+    ficha_vampiro.vontade_update(value, SUBTRACAO)
     return redirect('/ficha/' + str(pk))

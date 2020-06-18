@@ -3,8 +3,8 @@ from django.db import models
 SOMA = '+'
 SUBTRACAO = '-'
 
-class Ficha(models.Model):
 
+class Ficha_Vampiro(models.Model):
     class Meta:
         verbose_name = ('ficha')
         verbose_name_plural = ('fichas')
@@ -46,8 +46,7 @@ class Ficha(models.Model):
     def __str__(self):
         return self.id_personagem.nome
 
-
-    def calculaCustos(self):
+    def calcula_custos(self):
         retorno = {}
 
         if self.consciencia < 4:
@@ -70,14 +69,11 @@ class Ficha(models.Model):
 
         return retorno
 
-
-    def calculaPorcentagens(self):
-        retorno = {}
-
-        retorno['vitalidade'] = 100 * (self.vitalidade / self.vitalidade_max)
-        retorno['dano_agravado'] = 100 * (self.dano_agravado / self.vitalidade_max)
-        retorno['sangue'] = 100 * (self.pontos_sangue / self.pontos_sangue_max)
-        retorno['vontade'] = 100 * (self.forca_vontade / self.forca_vontade_max)
+    def calcula_porcentagens(self):
+        retorno = {'vitalidade': 100 * (self.vitalidade / self.vitalidade_max),
+                   'dano_agravado': 100 * (self.dano_agravado / self.vitalidade_max),
+                   'sangue': 100 * (self.pontos_sangue / self.pontos_sangue_max),
+                   'vontade': 100 * (self.forca_vontade / self.forca_vontade_max)}
 
         return retorno
 
