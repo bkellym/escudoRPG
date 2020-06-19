@@ -8,7 +8,7 @@ SUBTRACAO: str = '-'
 def check_campo(request):
     if request.method == "POST":
         id = request.POST['id']
-        habilidade = Habilidade.objects.get(id=id)
+        habilidade = Habilidade_Vampiro.objects.get(id=id)
 
         if habilidade.checked:
             habilidade.checked = False
@@ -22,7 +22,7 @@ def check_campo(request):
 def upar_habilidade(request):
     if request.method == "POST":
         id = request.POST['id']
-        habilidade = Habilidade.objects.get(id=id)
+        habilidade = Habilidade_Vampiro.objects.get(id=id)
         ficha = Ficha_Vampiro.objects.get(id=habilidade.ficha.id)
 
         if habilidade.valor == 0:

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Habilidade(models.Model):
+class Habilidade_Vampiro(models.Model):
 
     class Meta:
         verbose_name = 'habilidade'
