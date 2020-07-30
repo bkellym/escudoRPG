@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'escudoRPG.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', 'EscudoDB'),
+        'USER': os.environ.get('DB_USER', 'arcana'),
+        'PASSWORD': os.environ.get('DB_PASS', 'Latias@123'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
