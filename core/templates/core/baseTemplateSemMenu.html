@@ -39,6 +39,14 @@
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems, { });
         });
+
+        {% if messages %}
+            {% for message in messages %}
+                $(document).ready(function() {
+                    M.toast({html: '{{ message }}', classes: 'rounded red darken-3'});
+                });
+            {% endfor %}
+        {% endif %}
     </script>
 </body>
 </html>
