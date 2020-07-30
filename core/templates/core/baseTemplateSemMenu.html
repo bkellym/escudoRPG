@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection">
+    <link rel="stylesheet" href="{% static 'css/estilo1.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+
+    <title> {% block title %} {% endblock %} </title>
+</head>
+
+<body>
+
+    <div class = 'container'>
+        <div class="row">
+            {% block conteudo %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, { });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, { });
+        });
+    </script>
+</body>
+</html>
