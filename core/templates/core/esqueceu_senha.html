@@ -1,0 +1,32 @@
+{% extends 'core/baseTemplateSemMenu.html' %}
+
+{% block title %}
+    Esqueci a Senha
+{% endblock title %}
+
+{% block conteudo %}
+
+<div class = "col s3"></div>
+
+<form action="{% url 'esqueceu_senha' %}" method="post" class="col s6 blue-grey darken-2"
+      style="border-radius: 1px 50px; margin-top:13%"> {% csrf_token %}
+
+    <div class="input-field col s12">
+        <input id="email" name="email"  type="text" class="validate">
+        <label for="email"> Email </label>
+    </div>
+    <div class="input-field col s12">
+        <input id="confirm_email" name="confirm_email"  type="text" class="validate">
+        <label for="confirm_email"> Confirme o Email </label>
+    </div>
+
+    <div class = "row">
+        <div class="input-field col s6"> </div>
+        <div class = "col s6" style="padding-right:25px;">
+            <button class="btn-large waves-effect waves-light" style="width:100%;" type="submit"> Recuperar Senha
+            </button>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

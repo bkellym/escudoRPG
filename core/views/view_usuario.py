@@ -33,3 +33,19 @@ def cadastrar_usuario(request, template_name="core/cadastro_usuario.html"):
         return redirect('/')
     else:
         return render(request, template_name)
+
+
+def login_usuario(request, template_name="core/login.html"):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+    else:
+        return render(request, template_name)
+
+
+def esqueceu_senha(request, template_name="core/esqueceu_senha.html"):
+    if request.method == "POST":
+        username = request.POST['email']
+        password = request.POST['confirm_email']
+    else:
+        return render(request, template_name)
