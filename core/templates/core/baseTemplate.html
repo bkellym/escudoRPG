@@ -16,13 +16,22 @@
 
 <body>
 
-    <ul id="slide-out" class="sidenav">
-        {% block menu %}
-        {% endblock %}
-    </ul>
-    <a href="#" id="btn-open-menu" data-target="slide-out" class="sidenav-trigger btn-small btn-floating" style="margin:auto;">
-        <i class="material-icons">chevron_right</i>
-    </a>
+    <nav>
+        <div class="nav-wrapper teal darken-3">
+            <a href="#" data-target="slide-out" class="sidenav-trigger button-collapse show-on-large">
+                <i class="material-icons"> menu </i>
+            </a>
+            <a href="#" class="brand-logo"> EscudoRPG </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'logout' %}"> logout </a></li>
+            </ul>
+
+            <ul id="slide-out" class="sidenav">
+                {% block menu %}
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
 
     <div class = 'container'>
         <div class="row">
