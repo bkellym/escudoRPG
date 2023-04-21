@@ -3,5 +3,5 @@ Django
 django-heroku
 gunicorn==20.0.4
 pytest
-sqlparse==0.3.1
+sqlparse==0.4.4
 psycopg2
